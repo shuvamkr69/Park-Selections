@@ -1,0 +1,254 @@
+@import "tailwindcss";
+
+/* ------------------------------------------------------------------ *
+ * Design tokens — the CSS source of truth for the brand.
+ * Editing these values restyles the entire site (see config/theme.ts
+ * for the JS-side motion/layout tokens).
+ * ------------------------------------------------------------------ */
+:root {
+  --background: #faf8f3; /* warm ivory */
+  --foreground: #1c1b18; /* warm near-black */
+
+  --primary: #13332a; /* deep forest green */
+  --primary-foreground: #f6f2e9;
+
+  --accent: #b8935a; /* muted gold */
+  --accent-foreground: #1c1b18;
+
+  --card: #ffffff;
+  --card-foreground: #1c1b18;
+
+  --muted: #efe9dd;
+  --muted-foreground: #6d6656;
+
+  --border: #e5ded0;
+  --ring: #b8935a;
+
+  --radius: 0.75rem;
+}
+
+@theme inline {
+  /* Colours */
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-border: var(--border);
+  --color-ring: var(--ring);
+
+  /* Typography */
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-serif: var(--font-playfair), ui-serif, Georgia, serif;
+
+  /* Radius scale */
+  --radius-sm: calc(var(--radius) - 0.375rem);
+  --radius-md: calc(var(--radius) - 0.125rem);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 0.5rem);
+  --radius-2xl: calc(var(--radius) + 1rem);
+
+  /* Shadows */
+  --shadow-soft:
+    0 1px 2px rgba(28, 27, 24, 0.04), 0 8px 24px -12px rgba(28, 27, 24, 0.15);
+  --shadow-card:
+    0 2px 4px rgba(28, 27, 24, 0.04), 0 24px 48px -24px rgba(28, 27, 24, 0.25);
+  --shadow-lift: 0 30px 60px -30px rgba(19, 51, 42, 0.35);
+
+  /* Container */
+  --container-max: 80rem;
+
+  /* Timing */
+  --ease-smooth: cubic-bezier(0.22, 1, 0.36, 1);
+
+  /* Keyframes */
+  --animate-marquee: marquee 40s linear infinite;
+  --animate-shimmer: shimmer 2.2s ease-in-out infinite;
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes shimmer {
+  0%,
+  100% {
+    opacity: 0.35;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+/* ------------------------------------------------------------------ *
+ * Dark theme tokens — override the :root defaults above.
+ * Applied explicitly via [data-theme="dark"] or via system preference
+ * when the user has not made an explicit choice.
+ * ------------------------------------------------------------------ */
+
+/* System preference fallback (no explicit data-theme set) */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --background: #0f0d0b;
+    --foreground: #f0ead8;
+    --primary: #1e4d3a;
+    --primary-foreground: #f0ead8;
+    --accent: #c9a46a;
+    --accent-foreground: #0f0d0b;
+    --card: #1a1713;
+    --card-foreground: #f0ead8;
+    --muted: #252118;
+    --muted-foreground: #9e9282;
+    --border: #302c26;
+    --ring: #c9a46a;
+  }
+}
+
+/* Explicit user choice — overrides both :root and the media query */
+[data-theme="dark"] {
+  --background: #0f0d0b;
+  --foreground: #f0ead8;
+  --primary: #1e4d3a;
+  --primary-foreground: #f0ead8;
+  --accent: #c9a46a;
+  --accent-foreground: #0f0d0b;
+  --card: #1a1713;
+  --card-foreground: #f0ead8;
+  --muted: #252118;
+  --muted-foreground: #9e9282;
+  --border: #302c26;
+  --ring: #c9a46a;
+}
+
+/* Explicit light choice — wins over dark system preference */
+[data-theme="light"] {
+  --background: #faf8f3;
+  --foreground: #1c1b18;
+  --primary: #13332a;
+  --primary-foreground: #f6f2e9;
+  --accent: #b8935a;
+  --accent-foreground: #1c1b18;
+  --card: #ffffff;
+  --card-foreground: #1c1b18;
+  --muted: #efe9dd;
+  --muted-foreground: #6d6656;
+  --border: #e5ded0;
+  --ring: #b8935a;
+}
+
+/* ------------------------------------------------------------------ *
+ * Base
+ * ------------------------------------------------------------------ */
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+
+  html {
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  body {
+    background: var(--background);
+    color: var(--foreground);
+    font-family: var(--font-sans);
+    font-feature-settings: "ss01", "cv01";
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5 {
+    font-family: var(--font-serif);
+    font-weight: 500;
+    letter-spacing: -0.01em;
+    line-height: 1.05;
+  }
+
+  ::selection {
+    background: var(--accent);
+    color: var(--accent-foreground);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--ring);
+    outline-offset: 3px;
+  }
+
+  /* Lenis smooth-scroll requirements */
+  html.lenis,
+  html.lenis body {
+    height: auto;
+  }
+
+  .lenis.lenis-smooth {
+    scroll-behavior: auto !important;
+  }
+
+  .lenis.lenis-stopped {
+    overflow: hidden;
+  }
+}
+
+/* ------------------------------------------------------------------ *
+ * Reusable utilities
+ * ------------------------------------------------------------------ */
+@utility container-px {
+  width: 100%;
+  max-width: var(--container-max);
+  margin-inline: auto;
+  padding-inline: 1.5rem;
+}
+
+@utility glass {
+  background: color-mix(in srgb, var(--card) 70%, transparent);
+  backdrop-filter: blur(14px) saturate(1.4);
+  -webkit-backdrop-filter: blur(14px) saturate(1.4);
+}
+
+@utility text-gradient-gold {
+  background: linear-gradient(
+    100deg,
+    var(--accent) 0%,
+    #e2c893 45%,
+    var(--accent) 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Hairline eyebrow label used across sections */
+@utility eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.625rem;
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
