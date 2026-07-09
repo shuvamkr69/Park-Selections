@@ -10,7 +10,7 @@ import { Reveal } from "@/components/animation/reveal";
 export const metadata: Metadata = {
   title: "Weddings & Events",
   description:
-    "Host weddings, engagements, receptions and corporate meetings at Park Selections Bhubaneswar — elegant indoor and open-air venues near KIIT.",
+    "Host weddings, engagements, receptions and corporate meetings at Park Selections Bhubaneswar — elegant indoor and open-air venues.",
   alternates: { canonical: "/events" },
 };
 
@@ -23,7 +23,6 @@ export default function EventsPage() {
         description="Elegant indoor settings and open-air venues where moments become cherished memories."
         image={img(IMAGES.wedding, 2000)}
         imageAlt="A wedding celebration at Park Selections"
-        crumbs={[{ label: "Home", href: "/" }, { label: "Events" }]}
       />
 
       <section className="bg-background py-20 md:py-28">

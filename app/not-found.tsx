@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Button } from "@/components/ui/button";
+import { GlassButton } from "@/components/ui/glass-button";
 import { Container } from "@/components/ui/container";
 
 export default function NotFound() {
@@ -18,12 +18,12 @@ export default function NotFound() {
           the comfort of Park Selections.
         </p>
         <div className="mt-9 flex flex-col gap-4 sm:flex-row">
-          <Button href="/" size="lg">
+          <GlassButton href="/" size="lg">
             Return Home
-          </Button>
-          <Button href="/rooms" size="lg" variant="outline">
+          </GlassButton>
+          <GlassButton href="/rooms" size="lg">
             Explore Rooms
-          </Button>
+          </GlassButton>
         </div>
         <Link
           href="/contact"

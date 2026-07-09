@@ -11,17 +11,22 @@ import {
   type ReactNode,
 } from "react";
 import { gsap, prefersReducedMotion } from "@/lib/gsap";
-import { theme as themeConfig } from "@/config/theme";
 
 export type ThemeMode = "light" | "dark";
 
 const STORAGE_KEY = "ps-theme";
 
-// Background hex values for the transition overlay — must match globals.css exactly.
-const OVERLAY_BG: Record<ThemeMode, string> = {
-  light: themeConfig.colors.background,
-  dark: themeConfig.darkColors.background,
-};
+// Read a theme's --background straight from the single CSS source
+// (app/theme.css) so the transition overlay can never drift out of sync.
+function overlayBg(mode: ThemeMode): string {
+  const probe = document.createElement("div");
+  probe.setAttribute("data-theme", mode);
+  probe.style.display = "none";
+  document.documentElement.appendChild(probe);
+  const value = getComputedStyle(probe).getPropertyValue("--background").trim();
+  probe.remove();
+  return value || (mode === "dark" ? "#0f0d0b" : "#faf8f3");
+}
 
 interface ThemeContextValue {
   theme: ThemeMode;
@@ -67,12 +72,13 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
     animating.current = true;
 
     const next: ThemeMode = themeRef.current === "light" ? "dark" : "light";
+    const nextBg = overlayBg(next);
     const overlay = overlayRef.current;
 
     // Reduced-motion path: instant swap behind a 250ms fade
     if (!overlay || prefersReducedMotion()) {
       if (overlay) {
-        overlay.style.backgroundColor = OVERLAY_BG[next];
+        overlay.style.backgroundColor = nextBg;
         overlay.style.opacity = "1";
         overlay.style.pointerEvents = "all";
       }
@@ -106,7 +112,7 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
         Math.max(oy, window.innerHeight - oy),
       ) * 1.05;
 
-    overlay.style.backgroundColor = OVERLAY_BG[next];
+    overlay.style.backgroundColor = nextBg;
     overlay.style.clipPath = `circle(0px at ${ox}px ${oy}px)`;
     overlay.style.opacity = "1";
     overlay.style.pointerEvents = "all";

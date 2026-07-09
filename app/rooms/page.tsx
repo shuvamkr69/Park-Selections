@@ -24,7 +24,6 @@ export default function RoomsPage() {
         description="Five refined categories, each designed for deep rest and effortless work."
         image={img(IMAGES.suite, 2000)}
         imageAlt="A suite at Park Selections"
-        crumbs={[{ label: "Home", href: "/" }, { label: "Rooms" }]}
       />
 
       <section className="bg-background py-20 md:py-28">

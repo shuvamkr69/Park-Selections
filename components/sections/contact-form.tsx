@@ -2,7 +2,7 @@
 
 import { useState, type FormEvent } from "react";
 import { Check, Loader2 } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { GlassButton } from "@/components/ui/glass-button";
 import { cn } from "@/lib/utils";
 
 type Status = "idle" | "submitting" | "success";
@@ -34,14 +34,13 @@ export function ContactForm() {
           Your enquiry has been received. Our reservations team will be in touch
           with you shortly.
         </p>
-        <Button
-          variant="outline"
+        <GlassButton
           size="sm"
           className="mt-6"
           onClick={() => setStatus("idle")}
         >
           Send another enquiry
-        </Button>
+        </GlassButton>
       </div>
     );
   }
@@ -121,10 +120,11 @@ export function ContactForm() {
         </div>
       </div>
 
-      <Button
+      <GlassButton
         type="submit"
         size="lg"
-        className="mt-6 w-full"
+        fullWidth
+        className="mt-6"
         disabled={status === "submitting"}
       >
         {status === "submitting" ? (
@@ -134,7 +134,7 @@ export function ContactForm() {
         ) : (
           "Send Enquiry"
         )}
-      </Button>
+      </GlassButton>
     </form>
   );
 }

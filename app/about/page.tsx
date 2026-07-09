@@ -24,10 +24,9 @@ export default function AboutPage() {
       <PageHero
         eyebrow={CONTENT.about.eyebrow}
         title="A stay that stays in your heart"
-        description="Modern luxury, rooted in the warmth of Odia hospitality — moments from KIIT in the heart of Bhubaneswar."
+        description="Modern luxury, rooted in the warmth of Odia hospitality — in the heart of Bhubaneswar."
         image={img(IMAGES.heroLobby, 2000)}
         imageAlt="The lobby lounge at Park Selections"
-        crumbs={[{ label: "Home", href: "/" }, { label: "About" }]}
       />
 
       <SplitFeature

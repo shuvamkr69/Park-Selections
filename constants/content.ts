@@ -14,7 +14,7 @@ export const CONTENT = {
   intro: {
     eyebrow: "Welcome to Park Selections",
     title: "Where every stay feels like it belongs",
-    body: "We aim to provide an exceptional stay with unparalleled comfort and beauty, ensuring every guest feels valued and cherished. Set in the heart of Bhubaneswar near KIIT, Park Selections blends modern luxury with the warmth of hospitality.",
+    body: "We aim to provide an exceptional stay with unparalleled comfort and beauty, ensuring every guest feels valued and cherished. Set in the heart of Bhubaneswar, Park Selections blends modern luxury with the warmth of hospitality.",
   },
 
   about: {

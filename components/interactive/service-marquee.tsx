@@ -1,150 +1,68 @@
 "use client";
 
-import { useEffect, useRef } from "react";
-import { Diamond } from "lucide-react";
-import { MARQUEE_ITEMS } from "@/constants/services";
-import type { Amenity } from "@/types";
-import { prefersReducedMotion } from "@/lib/gsap";
+import { ThreeDMarquee } from "@/components/ui/3d-marquee";
 
 /**
- * Two infinite marquee strips scrolling in opposite directions. A single rAF
- * loop advances both tracks; the base speed is subtly modulated by the user's
- * vertical scroll velocity. Content is duplicated so the loop wraps with no
- * visible jump.
+ * Offerings showcase built on the Aceternity 3D Marquee. The image set is
+ * drawn from the marquee folder (`public/images/marquee/`) for a curated
+ * visual flow.
  */
 
-function Sequence({
-  items,
-  ariaHidden,
-}: {
-  items: Amenity[];
-  ariaHidden?: boolean;
-}) {
-  return (
-    <div
-      className="flex shrink-0 items-center"
-      aria-hidden={ariaHidden || undefined}
-    >
-      {items.map(({ title, icon: Icon }, i) => (
-        <div key={`${title}-${i}`} className="flex items-center">
-          <span className="flex items-center gap-3 px-6 md:px-9">
-            <Icon className="size-5 text-accent md:size-6" />
-            <span className="whitespace-nowrap text-lg font-medium uppercase tracking-[0.14em] text-primary-foreground md:text-2xl">
-              {title}
-            </span>
-          </span>
-          <Diamond className="size-2.5 shrink-0 fill-accent text-accent" />
-        </div>
-      ))}
-    </div>
-  );
-}
+// Marquee images sourced from public/images/marquee/
+const MARQUEE_IMAGES = [
+  "/images/marquee/Gemini_Generated_Image_aq5rq2aq5rq2aq5r.png",
+  "/images/marquee/Gemini_Generated_Image_aq5rq2aq5rq2aq5r (1).png",
+  "/images/marquee/Gemini_Generated_Image_aq5rq2aq5rq2aq5r (2).png",
+  "/images/marquee/Gemini_Generated_Image_aq5rq2aq5rq2aq5r (3).png",
+  "/images/marquee/Gemini_Generated_Image_aq5rq2aq5rq2aq5r (4).png",
+  "/images/marquee/Gemini_Generated_Image_aq5rq2aq5rq2aq5r (5).png",
+  "/images/marquee/Gemini_Generated_Image_aq5rq2aq5rq2aq5r (6).png",
+  "/images/marquee/Gemini_Generated_Image_aq5rq2aq5rq2aq5r (7).png",
+  "/images/marquee/Gemini_Generated_Image_aq5rq2aq5rq2aq5r (8).png",
+  "/images/marquee/Gemini_Generated_Image_aq5rq2aq5rq2aq5r (9).png",
+];
 
-function Row({
-  direction,
-  velocityRef,
-}: {
-  direction: "left" | "right";
-  velocityRef: React.MutableRefObject<number>;
-}) {
-  const trackRef = useRef<HTMLDivElement>(null);
-  const posRef = useRef(0);
-  const rafRef = useRef(0);
-
-  useEffect(() => {
-    const track = trackRef.current;
-    if (!track) return;
-
-    const reduced = prefersReducedMotion();
-    const seq = track.firstElementChild as HTMLElement | null;
-    let setWidth = seq?.offsetWidth ?? 0;
-
-    const measure = () => {
-      const first = track.firstElementChild as HTMLElement | null;
-      setWidth = first?.offsetWidth ?? setWidth;
-    };
-    const ro = new ResizeObserver(measure);
-    if (seq) ro.observe(seq);
-
-    // Right-scrolling row starts offset so content fills from the left edge.
-    posRef.current = direction === "right" ? -setWidth : 0;
-
-    const base = 0.4; // px per frame
-    let last = performance.now();
-
-    const tick = (now: number) => {
-      rafRef.current = requestAnimationFrame(tick);
-      const dt = Math.min((now - last) / 16.667, 3); // frames elapsed, capped
-      last = now;
-
-      if (!setWidth) {
-        measure();
-        return;
-      }
-
-      // Scroll velocity nudges speed; direction sign keeps rows opposed.
-      const dir = direction === "left" ? -1 : 1;
-      const speed = (base + Math.abs(velocityRef.current) * 0.35) * dir;
-      let pos = posRef.current + speed * dt;
-
-      // Wrap seamlessly within one sequence width.
-      if (pos <= -setWidth) pos += setWidth;
-      else if (pos >= 0) pos -= setWidth;
-      posRef.current = pos;
-
-      track.style.transform = `translate3d(${pos}px,0,0)`;
-    };
-
-    if (!reduced) {
-      rafRef.current = requestAnimationFrame(tick);
-    } else if (direction === "right") {
-      track.style.transform = `translate3d(${-setWidth}px,0,0)`;
-    }
-
-    return () => {
-      cancelAnimationFrame(rafRef.current);
-      ro.disconnect();
-    };
-  }, [direction, velocityRef]);
-
-  return (
-    <div className="flex overflow-hidden">
-      <div ref={trackRef} className="flex will-change-transform">
-        <Sequence items={MARQUEE_ITEMS} />
-        <Sequence items={MARQUEE_ITEMS} ariaHidden />
-      </div>
-    </div>
-  );
-}
+// Repeat to fill 32 images for the full marquee
+const images = [
+  ...MARQUEE_IMAGES,
+  ...MARQUEE_IMAGES,
+  ...MARQUEE_IMAGES,
+  ...MARQUEE_IMAGES.slice(0, 2),
+];
 
 export function ServiceMarquee() {
-  const velocityRef = useRef(0);
-
-  // Track vertical scroll velocity, smoothed toward 0 so it eases out.
-  useEffect(() => {
-    let lastY = window.scrollY;
-    let raf = 0;
-
-    const loop = () => {
-      raf = requestAnimationFrame(loop);
-      const y = window.scrollY;
-      const delta = y - lastY;
-      lastY = y;
-      // Blend the fresh delta in, decay the rest.
-      velocityRef.current = velocityRef.current * 0.85 + delta * 0.15;
-    };
-    raf = requestAnimationFrame(loop);
-    return () => cancelAnimationFrame(raf);
-  }, []);
-
   return (
     <section
       aria-label="Our offerings"
-      className="overflow-hidden border-y border-primary-foreground/10 bg-primary py-8 md:py-12"
+      className="overflow-hidden border-y border-primary-foreground/10 bg-primary py-16 md:py-24"
     >
-      <div className="flex flex-col gap-4 md:gap-6">
-        <Row direction="left" velocityRef={velocityRef} />
-        <Row direction="right" velocityRef={velocityRef} />
+      <div className="container-px">
+        <div className="mx-auto max-w-2xl text-center">
+          <span className="eyebrow justify-center text-accent">
+            Everything under one roof
+          </span>
+          <h2 className="mt-4 font-serif text-3xl text-primary-foreground md:text-5xl">
+            A world of refined experiences
+          </h2>
+          <p className="mx-auto mt-4 max-w-md text-primary-foreground/70">
+            Rooms and suites, celebrated venues, wellness and fine dining —
+            explored in a single glance.
+          </p>
+        </div>
+
+        <div className="relative mt-12 rounded-3xl bg-background/90 p-2 ring-1 ring-primary-foreground/10">
+          <ThreeDMarquee images={images} />
+
+          {/* Edge fades so the tilted grid melts into the section background */}
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute inset-x-0 top-0 z-20 h-16 rounded-t-3xl bg-gradient-to-b from-primary to-transparent"
+          />
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute inset-x-0 bottom-0 z-20 h-16 rounded-b-3xl bg-gradient-to-t from-primary to-transparent"
+          />
+        </div>
       </div>
     </section>
   );

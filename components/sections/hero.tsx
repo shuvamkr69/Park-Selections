@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { IMAGES, img } from "@/lib/images";
 import { CONTENT } from "@/constants/content";
-import { Button } from "@/components/ui/button";
+import { GlassButton } from "@/components/ui/glass-button";
 import { Parallax } from "@/components/animation/parallax";
 import { TextReveal } from "@/components/animation/text-reveal";
 import { Reveal } from "@/components/animation/reveal";
@@ -45,6 +45,7 @@ export function Hero() {
           text={hero.title}
           className="mt-6 max-w-4xl text-balance text-4xl font-medium sm:text-6xl md:text-7xl lg:text-[5.25rem]"
         />
+        
 
         <Reveal preset="fadeUp" delay={0.7}>
           <p className="mx-auto mt-7 max-w-xl text-balance text-base leading-relaxed text-white/85 md:text-lg">
@@ -54,12 +55,12 @@ export function Hero() {
 
         <Reveal preset="fadeUp" delay={0.85}>
           <div className="mt-9 flex flex-col items-center gap-4 sm:flex-row">
-            <Button href={hero.primaryCta.href} size="lg" variant="accent">
+            <GlassButton href={hero.primaryCta.href} size="lg">
               {hero.primaryCta.label}
-            </Button>
-            <Button href={hero.secondaryCta.href} size="lg" variant="light">
+            </GlassButton>
+            <GlassButton href={hero.secondaryCta.href} size="lg">
               {hero.secondaryCta.label}
-            </Button>
+            </GlassButton>
           </div>
         </Reveal>
       </div>

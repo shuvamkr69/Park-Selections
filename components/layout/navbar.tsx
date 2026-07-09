@@ -6,6 +6,7 @@ import { usePathname } from "next/navigation";
 import { Menu, X, Phone } from "lucide-react";
 import { NAV_ITEMS, SITE } from "@/constants/site";
 import { Button } from "@/components/ui/button";
+import { EyeFollowButton } from "@/components/ui/eye-follow-button";
 import { ThemeToggle } from "@/components/interactive/theme-toggle";
 import { cn } from "@/lib/utils";
 
@@ -103,14 +104,11 @@ export function Navbar() {
             <span className="hidden xl:inline">Reservations</span>
           </a>
           <ThemeToggle lightNav={!solid} />
-          <Button
+          <EyeFollowButton
+            text="Book Now"
             href="/contact"
-            size="sm"
-            variant={solid ? "primary" : "light"}
-            className="hidden sm:inline-flex"
-          >
-            Book Now
-          </Button>
+            className="hidden sm:block"
+          />
           <button
             type="button"
             onClick={() => setOpen((v) => !v)}

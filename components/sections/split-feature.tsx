@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { Check } from "lucide-react";
 import { Container } from "@/components/ui/container";
-import { Button } from "@/components/ui/button";
+import { GlassButton } from "@/components/ui/glass-button";
 import { TextReveal } from "@/components/animation/text-reveal";
 import { Reveal } from "@/components/animation/reveal";
 import { cn } from "@/lib/utils";
@@ -54,7 +54,8 @@ export function SplitFeature({
               />
             </div>
             {secondaryImage && (
-              <div className="absolute -bottom-8 hidden aspect-square w-40 overflow-hidden rounded-xl border-4 border-background shadow-lift sm:block lg:w-48"
+              <div
+                className="absolute -bottom-8 hidden aspect-square w-40 overflow-hidden rounded-xl border-4 border-background shadow-lift sm:block lg:w-48"
                 style={reverse ? { left: "-2rem" } : { right: "-2rem" }}
               >
                 <Image
@@ -99,7 +100,10 @@ export function SplitFeature({
                 className="mt-7 grid gap-3 sm:grid-cols-2"
               >
                 {bullets.map((b) => (
-                  <li key={b} className="flex items-start gap-2.5 text-sm text-foreground">
+                  <li
+                    key={b}
+                    className="flex items-start gap-2.5 text-sm text-foreground uppercase"
+                  >
                     <Check className="mt-0.5 size-4 shrink-0 text-accent" />
                     {b}
                   </li>
@@ -110,9 +114,9 @@ export function SplitFeature({
             {cta && (
               <Reveal preset="fadeUp" delay={0.2}>
                 <div className="mt-9">
-                  <Button href={cta.href} size="lg">
+                  <GlassButton href={cta.href} size="lg">
                     {cta.label}
-                  </Button>
+                  </GlassButton>
                 </div>
               </Reveal>
             )}

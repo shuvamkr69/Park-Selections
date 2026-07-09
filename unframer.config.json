@@ -1,0 +1,8 @@
+{
+  "outDir": "./components/framer",
+  "jsx": true,
+  "components": {
+    "fluid-glass-button": "https://framer.com/m/Fluid-Glass-Button-baNKUV.js@e2eqzNOz7jipJgIP3nqu",
+    "eye-follow-button": "https://framer.com/m/Eye-Follow-Button-yMBK.js@UiZdcXLPs68fBczUfQ27"
+  }
+}

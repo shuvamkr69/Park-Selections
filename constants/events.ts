@@ -66,7 +66,7 @@ export const EVENTS: EventVenue[] = [
     category: "Business",
     tagline: "Where business feels considered",
     description:
-      "Purpose-built spaces for conferences, board meetings and corporate events, moments from KIIT and the tech corridor.",
+      "Purpose-built spaces for conferences, board meetings and corporate events.",
     longDescription:
       "Productive by design, our meeting and conference spaces pair modern audio-visual infrastructure with refined comfort. From focused board sessions to full-day conferences, our team handles the logistics so your delegates can focus on what matters.",
     capacity: "10 – 300 Delegates",

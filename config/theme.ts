@@ -1,32 +1,15 @@
 /**
  * JS-side design tokens.
  *
- * Colour, font-family, radius and shadow scales live in `app/globals.css`
- * under Tailwind v4's `@theme` block (the CSS source of truth). This file
- * centralizes the values consumed by JavaScript — primarily GSAP timings,
- * easings, breakpoints and z-index — so motion and layout logic can be tuned
- * globally from one place.
+ * This file centralizes the values consumed by JavaScript — GSAP timings,
+ * easings, breakpoints and z-index.
+ *
+ * Colours are NOT duplicated here: they live only in `app/theme.css` and are
+ * read from CSS variables at runtime by the effects that need them (the theme
+ * transition overlay and the fluid cursor). Fonts live in `config/fonts.ts`.
  */
 
 export const theme = {
-  /** Light-mode palette (hex values are authoritative in globals.css). */
-  colors: {
-    background: "#faf8f3",
-    foreground: "#1c1b18",
-    primary: "#123024",
-    accent: "#b8935a",
-    muted: "#e7e1d5",
-  },
-
-  /** Dark-mode palette mirror — used by the JS-side theme transition overlay. */
-  darkColors: {
-    background: "#0f0d0b",
-    foreground: "#f0ead8",
-    primary: "#1e4d3a",
-    accent: "#c9a46a",
-    muted: "#252118",
-  },
-
   fonts: {
     sans: "var(--font-sans)",
     serif: "var(--font-serif)",

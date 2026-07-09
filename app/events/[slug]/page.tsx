@@ -5,7 +5,7 @@ import { Check, Users, Sparkles } from "lucide-react";
 import { EVENTS, getEvent } from "@/constants/events";
 import { SITE } from "@/constants/site";
 import { Container } from "@/components/ui/container";
-import { Button } from "@/components/ui/button";
+import { GlassButton } from "@/components/ui/glass-button";
 import { EventCard } from "@/components/ui/event-card";
 import { SectionHeader } from "@/components/ui/section-header";
 import { PageHero } from "@/components/sections/page-hero";
@@ -51,11 +51,6 @@ export default async function EventDetailPage({
         description={event.tagline}
         image={event.gallery[0]}
         imageAlt={event.name}
-        crumbs={[
-          { label: "Home", href: "/" },
-          { label: "Events", href: "/events" },
-          { label: event.name },
-        ]}
       />
 
       <section className="bg-background py-20 md:py-28">
@@ -110,9 +105,9 @@ export default async function EventDetailPage({
                     </li>
                   ))}
                 </ul>
-                <Button href="/contact" size="lg" className="mt-7 w-full">
+                <GlassButton href="/contact" size="lg" fullWidth className="mt-7">
                   Plan Your Event
-                </Button>
+                </GlassButton>
                 <p className="mt-4 flex items-center justify-center gap-2 text-center text-xs text-muted-foreground">
                   <Sparkles className="size-3.5 text-accent" />
                   Dedicated event coordination included

@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import { theme } from "@/config/theme";
 
 /**
  * Lusion-style cursor fog — a GPU stable-fluids simulation (advection,
@@ -18,7 +17,8 @@ import { theme } from "@/config/theme";
  * WebGL2 float render targets.
  */
 
-// Brand accent (hex) → normalized rgb, kept in sync with config/theme.ts.
+// Brand accent (hex) → normalized rgb. The live colour is read from the
+// --accent CSS variable (app/theme.css) at runtime; see the effect below.
 function hexToRgb01(hex: string): [number, number, number] {
   const h = hex.replace("#", "");
   return [
@@ -39,7 +39,7 @@ const config = {
   SPLAT_RADIUS: 0.08,
   SPLAT_FORCE: 3800,
   SINK: 200, // downward pull per unit of fog density
-  DYE_COLOR: hexToRgb01(theme.colors.accent), // brand gold
+  DYE_COLOR: hexToRgb01("#b8935a"), // default; overridden at runtime from --accent
   DYE_INTENSITY: 0.12,
 };
 
@@ -292,6 +292,13 @@ export function FluidCursor() {
     if (!gl) return;
     if (!gl.getExtension("EXT_color_buffer_float")) return;
     gl.getExtension("OES_texture_float_linear");
+
+    // Read the brand accent from the single CSS source (app/theme.css) so the
+    // fog colour always matches the active theme.
+    const accentHex = getComputedStyle(document.documentElement)
+      .getPropertyValue("--accent")
+      .trim();
+    if (accentHex) config.DYE_COLOR = hexToRgb01(accentHex);
 
     let destroyed = false;
     let raf = 0;

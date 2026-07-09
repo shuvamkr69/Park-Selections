@@ -3,7 +3,7 @@ import { IMAGES, img } from "@/lib/images";
 import { CONTENT } from "@/constants/content";
 import { SITE } from "@/constants/site";
 import { Container } from "@/components/ui/container";
-import { Button } from "@/components/ui/button";
+import { GlassButton } from "@/components/ui/glass-button";
 import { TextReveal } from "@/components/animation/text-reveal";
 import { Reveal } from "@/components/animation/reveal";
 
@@ -40,12 +40,12 @@ export function CTA() {
         </Reveal>
         <Reveal preset="fadeUp" delay={0.2}>
           <div className="mt-9 flex flex-col items-center gap-4 sm:flex-row">
-            <Button href={cta.primary.href} size="lg" variant="accent">
+            <GlassButton href={cta.primary.href} size="lg">
               {cta.primary.label}
-            </Button>
-            <Button href={`tel:${SITE.contact.phone}`} size="lg" variant="light">
+            </GlassButton>
+            <GlassButton href={`tel:${SITE.contact.phone}`} size="lg">
               {cta.secondary.label}
-            </Button>
+            </GlassButton>
           </div>
         </Reveal>
       </Container>

@@ -42,7 +42,6 @@ export default function DiningPage() {
         description="Dining at Park Selections is a celebration of flavour, detail and thoughtful craftsmanship."
         image={img(IMAGES.diningRestaurant, 2000)}
         imageAlt="Namaskaram restaurant at Park Selections"
-        crumbs={[{ label: "Home", href: "/" }, { label: "Dining" }]}
       />
 
       <SplitFeature

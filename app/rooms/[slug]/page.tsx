@@ -6,7 +6,7 @@ import { ROOMS, getRoom } from "@/constants/rooms";
 import { SITE } from "@/constants/site";
 import { formatPhone } from "@/lib/utils";
 import { Container } from "@/components/ui/container";
-import { Button } from "@/components/ui/button";
+import { GlassButton } from "@/components/ui/glass-button";
 import { RoomCard } from "@/components/ui/room-card";
 import { SectionHeader } from "@/components/ui/section-header";
 import { PageHero } from "@/components/sections/page-hero";
@@ -57,11 +57,7 @@ export default async function RoomDetailPage({
         title={room.name}
         image={room.gallery[0]}
         imageAlt={room.name}
-        crumbs={[
-          { label: "Home", href: "/" },
-          { label: "Rooms", href: "/rooms" },
-          { label: room.name },
-        ]}
+
       />
 
       <section className="bg-background py-20 md:py-28">
@@ -172,9 +168,9 @@ export default async function RoomDetailPage({
                   ))}
                 </div>
 
-                <Button href="/contact" size="lg" className="mt-6 w-full">
+                <GlassButton href="/contact" size="lg" fullWidth className="mt-6">
                   Reserve This Room
-                </Button>
+                </GlassButton>
                 <a
                   href={`tel:${SITE.contact.phone}`}
                   className="mt-4 flex items-center justify-center gap-2 text-sm font-medium text-foreground transition-colors hover:text-accent"
