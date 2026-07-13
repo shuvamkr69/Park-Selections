@@ -3,7 +3,7 @@
 import { useEffect, useRef } from "react";
 
 /**
- * Lusion-style cursor fog — a GPU stable-fluids simulation (advection,
+ * Lusion-style cursor fog - a GPU stable-fluids simulation (advection,
  * vorticity confinement, Jacobi pressure solve) driven by pointer movement.
  * The dye is the brand gold accent and a buoyancy "sink" force makes the fog
  * flow downward and dissolve.
@@ -35,7 +35,7 @@ const config = {
   VELOCITY_DISSIPATION: 0.8, // how fast motion settles
   PRESSURE: 0.8,
   PRESSURE_ITERATIONS: 20,
-  CURL: 16, // vorticity — swirliness of the fog
+  CURL: 16, // vorticity - swirliness of the fog
   SPLAT_RADIUS: 0.08,
   SPLAT_FORCE: 3800,
   SINK: 200, // downward pull per unit of fog density
@@ -320,10 +320,16 @@ export function FluidCursor() {
       constructor(fragSource: string) {
         this.program = gl!.createProgram()!;
         gl!.attachShader(this.program, vertShader);
-        gl!.attachShader(this.program, compile(gl!.FRAGMENT_SHADER, fragSource));
+        gl!.attachShader(
+          this.program,
+          compile(gl!.FRAGMENT_SHADER, fragSource),
+        );
         gl!.bindAttribLocation(this.program, 0, "aPosition");
         gl!.linkProgram(this.program);
-        const count = gl!.getProgramParameter(this.program, gl!.ACTIVE_UNIFORMS);
+        const count = gl!.getProgramParameter(
+          this.program,
+          gl!.ACTIVE_UNIFORMS,
+        );
         for (let i = 0; i < count; i++) {
           const name = gl!.getActiveUniform(this.program, i)!.name;
           this.uniforms[name] = gl!.getUniformLocation(this.program, name);
@@ -575,7 +581,10 @@ export function FluidCursor() {
         velocity.texelSizeX,
         velocity.texelSizeY,
       );
-      gl.uniform1i(vorticityProgram.uniforms.uVelocity!, velocity.read.attach(0));
+      gl.uniform1i(
+        vorticityProgram.uniforms.uVelocity!,
+        velocity.read.attach(0),
+      );
       gl.uniform1i(vorticityProgram.uniforms.uCurl!, curl.attach(1));
       gl.uniform1f(vorticityProgram.uniforms.curl!, config.CURL);
       gl.uniform1f(vorticityProgram.uniforms.dt!, dt);
@@ -588,7 +597,10 @@ export function FluidCursor() {
         velocity.texelSizeX,
         velocity.texelSizeY,
       );
-      gl.uniform1i(divergenceProgram.uniforms.uVelocity!, velocity.read.attach(0));
+      gl.uniform1i(
+        divergenceProgram.uniforms.uVelocity!,
+        velocity.read.attach(0),
+      );
       blit(divergence);
 
       clearProgram.bind();
@@ -605,7 +617,10 @@ export function FluidCursor() {
       );
       gl.uniform1i(pressureProgram.uniforms.uDivergence!, divergence.attach(0));
       for (let i = 0; i < config.PRESSURE_ITERATIONS; i++) {
-        gl.uniform1i(pressureProgram.uniforms.uPressure!, pressure.read.attach(1));
+        gl.uniform1i(
+          pressureProgram.uniforms.uPressure!,
+          pressure.read.attach(1),
+        );
         blit(pressure.write);
         pressure.swap();
       }
@@ -616,8 +631,14 @@ export function FluidCursor() {
         velocity.texelSizeX,
         velocity.texelSizeY,
       );
-      gl.uniform1i(gradientProgram.uniforms.uPressure!, pressure.read.attach(0));
-      gl.uniform1i(gradientProgram.uniforms.uVelocity!, velocity.read.attach(1));
+      gl.uniform1i(
+        gradientProgram.uniforms.uPressure!,
+        pressure.read.attach(0),
+      );
+      gl.uniform1i(
+        gradientProgram.uniforms.uVelocity!,
+        velocity.read.attach(1),
+      );
       blit(velocity.write);
       velocity.swap();
 
@@ -627,7 +648,10 @@ export function FluidCursor() {
         velocity.texelSizeX,
         velocity.texelSizeY,
       );
-      gl.uniform1i(advectionProgram.uniforms.uVelocity!, velocity.read.attach(0));
+      gl.uniform1i(
+        advectionProgram.uniforms.uVelocity!,
+        velocity.read.attach(0),
+      );
       gl.uniform1i(advectionProgram.uniforms.uSource!, velocity.read.attach(0));
       gl.uniform1f(advectionProgram.uniforms.dt!, dt);
       gl.uniform1f(
@@ -637,7 +661,10 @@ export function FluidCursor() {
       blit(velocity.write);
       velocity.swap();
 
-      gl.uniform1i(advectionProgram.uniforms.uVelocity!, velocity.read.attach(0));
+      gl.uniform1i(
+        advectionProgram.uniforms.uVelocity!,
+        velocity.read.attach(0),
+      );
       gl.uniform1i(advectionProgram.uniforms.uSource!, dye.read.attach(1));
       gl.uniform1f(
         advectionProgram.uniforms.dissipation!,

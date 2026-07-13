@@ -25,10 +25,13 @@ export async function generateMetadata({
   const event = getEvent(slug);
   if (!event) return { title: "Event Not Found" };
   return {
-    title: `${event.name} — Events`,
+    title: `${event.name} - Events`,
     description: event.description,
     alternates: { canonical: `/events/${event.slug}` },
-    openGraph: { title: `${event.name} · ${SITE.name}`, description: event.description },
+    openGraph: {
+      title: `${event.name} · ${SITE.name}`,
+      description: event.description,
+    },
   };
 }
 
@@ -105,7 +108,12 @@ export default async function EventDetailPage({
                     </li>
                   ))}
                 </ul>
-                <GlassButton href="/contact" size="lg" fullWidth className="mt-7">
+                <GlassButton
+                  href="/contact"
+                  size="lg"
+                  fullWidth
+                  className="mt-7"
+                >
                   Plan Your Event
                 </GlassButton>
                 <p className="mt-4 flex items-center justify-center gap-2 text-center text-xs text-muted-foreground">
@@ -121,7 +129,10 @@ export default async function EventDetailPage({
       <section className="bg-muted/40 py-20 md:py-28">
         <Container>
           <SectionHeader eyebrow="More Occasions" title="Other celebrations" />
-          <Reveal stagger className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          <Reveal
+            stagger
+            className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3"
+          >
             {others.map((e) => (
               <EventCard key={e.slug} event={e} />
             ))}

@@ -17,7 +17,12 @@ import { cn } from "@/lib/utils";
 import { directRate, type BookingRoom } from "@/constants/booking";
 import { inr, nightsBetween, type SearchState } from "./shared";
 
-type SortKey = "recommended" | "price-asc" | "price-desc" | "size" | "popularity";
+type SortKey =
+  | "recommended"
+  | "price-asc"
+  | "price-desc"
+  | "size"
+  | "popularity";
 type CategoryKey = "all" | "Room" | "Suite";
 type BedKey = "all" | "king" | "twin";
 
@@ -38,7 +43,7 @@ type RoomResultsProps = {
   onReserve: (room: BookingRoom) => void;
 };
 
-/** Availability results — interactive filters, sorting and staggered cards. */
+/** Availability results - interactive filters, sorting and staggered cards. */
 export function RoomResults({
   rooms,
   search,
@@ -89,7 +94,13 @@ export function RoomResults({
       gsap.fromTo(
         cards,
         { y: 26, autoAlpha: 0 },
-        { y: 0, autoAlpha: 1, duration: 0.65, ease: "power3.out", stagger: 0.09 },
+        {
+          y: 0,
+          autoAlpha: 1,
+          duration: 0.65,
+          ease: "power3.out",
+          stagger: 0.09,
+        },
       );
     }, el);
     return () => ctx.revert();
@@ -105,7 +116,11 @@ export function RoomResults({
             Refine
           </span>
 
-          <div className="flex flex-wrap gap-2" role="group" aria-label="Room category">
+          <div
+            className="flex flex-wrap gap-2"
+            role="group"
+            aria-label="Room category"
+          >
             {CATEGORIES.map((c) => (
               <button
                 key={c.key}
@@ -153,7 +168,10 @@ export function RoomResults({
 
           <label className="inline-flex items-center gap-3 text-xs text-muted-foreground">
             <span className="whitespace-nowrap">
-              Up to <span className="font-semibold text-foreground">{inr(maxPrice)}</span>
+              Up to{" "}
+              <span className="font-semibold text-foreground">
+                {inr(maxPrice)}
+              </span>
             </span>
             <input
               type="range"
@@ -184,7 +202,10 @@ export function RoomResults({
         </div>
       </div>
 
-      <p aria-live="polite" className="mt-5 text-xs uppercase tracking-[0.18em] text-muted-foreground">
+      <p
+        aria-live="polite"
+        className="mt-5 text-xs uppercase tracking-[0.18em] text-muted-foreground"
+      >
         {visible.length} of {rooms.length} categories available
       </p>
 
@@ -199,7 +220,9 @@ export function RoomResults({
               data-room-card
               className={cn(
                 "group grid overflow-hidden rounded-2xl bg-card shadow-soft ring-1 transition-all duration-500 hover:shadow-card md:grid-cols-[minmax(0,17rem)_1fr]",
-                selected ? "ring-2 ring-accent" : "ring-border/60 hover:ring-border",
+                selected
+                  ? "ring-2 ring-accent"
+                  : "ring-border/60 hover:ring-border",
               )}
             >
               <button
@@ -230,8 +253,12 @@ export function RoomResults({
 
               <div className="flex flex-col gap-4 p-6 md:flex-row md:items-stretch md:gap-8 md:p-7">
                 <div className="min-w-0 flex-1">
-                  <p className="eyebrow">{room.category === "Suite" ? "Suite" : "Guest Room"}</p>
-                  <h3 className="mt-1.5 font-serif text-2xl text-foreground">{room.name}</h3>
+                  <p className="eyebrow">
+                    {room.category === "Suite" ? "Suite" : "Guest Room"}
+                  </p>
+                  <h3 className="mt-1.5 font-serif text-2xl text-foreground">
+                    {room.name}
+                  </h3>
                   <p className="mt-2 line-clamp-2 text-sm leading-relaxed text-muted-foreground">
                     {room.description}
                   </p>
@@ -279,14 +306,17 @@ export function RoomResults({
                     <p className="font-serif text-3xl leading-none text-foreground">
                       {inr(nightly)}
                     </p>
-                    <p className="mt-1 text-[11px] text-muted-foreground">per night</p>
+                    <p className="mt-1 text-[11px] text-muted-foreground">
+                      per night
+                    </p>
                     <p className="mt-1 inline-flex items-center gap-1 text-[11px] text-muted-foreground">
                       <Info className="size-3 text-accent" aria-hidden />
                       Excl. taxes &amp; fees
                     </p>
                     {nights > 1 && (
                       <p className="mt-1.5 text-[11px] font-medium text-foreground/70">
-                        {inr(nightly * nights * search.rooms)} for {nights} nights
+                        {inr(nightly * nights * search.rooms)} for {nights}{" "}
+                        nights
                       </p>
                     )}
                   </div>
@@ -307,7 +337,9 @@ export function RoomResults({
 
         {visible.length === 0 && (
           <div className="rounded-2xl border border-dashed border-border bg-card/60 p-12 text-center">
-            <p className="font-serif text-xl text-foreground">No rooms match these filters</p>
+            <p className="font-serif text-xl text-foreground">
+              No rooms match these filters
+            </p>
             <p className="mt-2 text-sm text-muted-foreground">
               Try widening the price range or clearing a filter.
             </p>

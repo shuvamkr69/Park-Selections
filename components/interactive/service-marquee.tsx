@@ -45,13 +45,13 @@ export function ServiceMarquee() {
             A world of refined experiences
           </h2>
           <p className="mx-auto mt-4 max-w-md text-primary-foreground/70">
-            Rooms and suites, celebrated venues, wellness and fine dining —
+            Rooms and suites, celebrated venues, wellness and fine dining -
             explored in a single glance.
           </p>
         </div>
       </div>
 
-      {/* Full-bleed wrapper — spans the entire viewport with only a slim,
+      {/* Full-bleed wrapper - spans the entire viewport with only a slim,
           consistent 16px aesthetic gutter on each side. */}
       <div className="mt-12 w-full px-4">
         <div className="relative w-full rounded-3xl bg-background/90 p-2 ring-1 ring-primary-foreground/10">

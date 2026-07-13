@@ -18,7 +18,7 @@ import { Parallax } from "@/components/animation/parallax";
 export const metadata: Metadata = {
   title: "About Us",
   description:
-    "Discover the story of Park Selections — a modern luxury hotel in Bhubaneswar near KIIT, blending contemporary design with the warmth of Odia hospitality.",
+    "Discover the story of Park Selections - a modern luxury hotel in Bhubaneswar near KIIT, blending contemporary design with the warmth of Odia hospitality.",
   alternates: { canonical: "/about" },
 };
 
@@ -28,12 +28,12 @@ export default function AboutPage() {
       <PageHero
         eyebrow={CONTENT.about.eyebrow}
         title="A stay that stays in your heart"
-        description="Modern luxury, rooted in the warmth of Odia hospitality — in the heart of Bhubaneswar."
+        description="Modern luxury, rooted in the warmth of Odia hospitality - in the heart of Bhubaneswar."
         image={img(IMAGES.heroLobby, 2000)}
         imageAlt="The lobby lounge at Park Selections"
       />
 
-      {/* ── Our story — editorial split ──────────────────────────────── */}
+      {/* ── Our story - editorial split ──────────────────────────────── */}
       <section className="relative overflow-hidden bg-background py-20 md:py-32">
         <Container>
           <div className="grid items-center gap-14 lg:grid-cols-12 lg:gap-20">
@@ -44,7 +44,10 @@ export default function AboutPage() {
                 className="absolute -right-5 -top-5 h-40 w-40 rounded-tr-2xl border-r border-t border-accent/40"
               />
               <div className="relative aspect-[4/5] overflow-hidden rounded-2xl shadow-card sm:aspect-[5/4] lg:aspect-[4/5]">
-                <Parallax speed={8} className="absolute -inset-y-[10%] inset-x-0">
+                <Parallax
+                  speed={8}
+                  className="absolute -inset-y-[10%] inset-x-0"
+                >
                   <Image
                     src={img(IMAGES.aboutStory)}
                     alt="Interior detail at Park Selections"
@@ -98,7 +101,7 @@ export default function AboutPage() {
         </Container>
       </section>
 
-      {/* ── Commitment — immersive full-width statement ──────────────── */}
+      {/* ── Commitment - immersive full-width statement ──────────────── */}
       <ImmersiveBanner
         eyebrow="Our Commitment"
         statement={`“${CONTENT.about.commitment}”`}
@@ -109,7 +112,7 @@ export default function AboutPage() {
 
       <Stats />
 
-      {/* ── Recognition — editorial award list ───────────────────────── */}
+      {/* ── Recognition - editorial award list ───────────────────────── */}
       <section className="bg-background py-20 md:py-28">
         <Container>
           <SectionHeader

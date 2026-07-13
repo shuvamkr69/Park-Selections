@@ -6,7 +6,7 @@ export const CONTENT = {
     eyebrow: "Bhubaneswar",
     title: ["A Stay That Stays", "In Your Heart"],
     subtitle:
-      "A luxury retreat where refined rooms, celebrated venues and heartfelt hospitality come together — in the heart of Bhubaneswar.",
+      "A luxury retreat where refined rooms, celebrated venues and heartfelt hospitality come together - in the heart of Bhubaneswar.",
     primaryCta: { label: "Book Your Stay", href: "/contact" },
     secondaryCta: { label: "Explore Rooms", href: "/rooms" },
   },
@@ -21,7 +21,7 @@ export const CONTENT = {
     eyebrow: "Our Story",
     title: "A modern sanctuary, rooted in warmth",
     body: [
-      "Park Selections was created with a single belief: that a great stay is felt, not just seen. Every space — from our light-filled rooms to our celebrated event venues — is designed to make you feel valued and cherished.",
+      "Park Selections was created with a single belief: that a great stay is felt, not just seen. Every space - from our light-filled rooms to our celebrated event venues - is designed to make you feel valued and cherished.",
       "Moments from Bhubaneswar's cultural corridor, we bring together contemporary design, considered service and the timeless warmth of hospitality. Whether you are here to work, to celebrate, or simply to rest, you will find a stay that stays in your heart.",
     ],
     commitment:
@@ -65,7 +65,7 @@ export const CONTENT = {
     {
       question: "Where is Park Selections located?",
       answer:
-        "We are on Plot No. 100, KIIT Road, near Falcon Marine Exports, Chandaka Industrial Estate, Patia, Bhubaneswar — moments from KIIT University and the city's tech corridor.",
+        "We are on Plot No. 100, KIIT Road, near Falcon Marine Exports, Chandaka Industrial Estate, Patia, Bhubaneswar - moments from KIIT University and the city's tech corridor.",
     },
     {
       question: "What are the check-in and check-out times?",

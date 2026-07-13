@@ -5,7 +5,7 @@ import { formatPhone } from "@/lib/utils";
 import { Container } from "@/components/ui/container";
 
 /**
- * Premium site footer — tagline band with a reserve CTA, brand + link columns
+ * Premium site footer - tagline band with a reserve CTA, brand + link columns
  * with elegant hover interactions, a dedicated contact column, and a giant
  * serif watermark anchoring the base. All links and contact details come from
  * the centralized site constants.
@@ -83,7 +83,11 @@ export function Footer() {
 
           {/* Link columns */}
           {FOOTER_LINKS.map((col) => (
-            <nav key={col.title} aria-label={col.title} className="flex flex-col gap-5">
+            <nav
+              key={col.title}
+              aria-label={col.title}
+              className="flex flex-col gap-5"
+            >
               <h3 className="font-sans text-[11px] font-semibold uppercase tracking-[0.25em] text-accent">
                 {col.title}
               </h3>

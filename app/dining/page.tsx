@@ -13,7 +13,7 @@ import { Parallax } from "@/components/animation/parallax";
 export const metadata: Metadata = {
   title: "Dining · Namaskaram",
   description:
-    "Namaskaram at Park Selections — an expression of taste and refinement. Refined, seasonal cuisine crafted with care, opening soon in Bhubaneswar.",
+    "Namaskaram at Park Selections - an expression of taste and refinement. Refined, seasonal cuisine crafted with care, opening soon in Bhubaneswar.",
   alternates: { canonical: "/dining" },
 };
 
@@ -46,7 +46,7 @@ export default function DiningPage() {
         imageAlt="Namaskaram restaurant at Park Selections"
       />
 
-      {/* ── The Namaskaram experience — editorial split ──────────────── */}
+      {/* ── The Namaskaram experience - editorial split ──────────────── */}
       <section className="relative overflow-hidden bg-background py-20 md:py-32">
         {/* Ghost wordmark */}
         <span
@@ -65,7 +65,10 @@ export default function DiningPage() {
                 className="absolute -left-5 -top-5 h-40 w-40 rounded-tl-2xl border-l border-t border-accent/40"
               />
               <div className="relative aspect-[4/5] overflow-hidden rounded-2xl shadow-card sm:aspect-[5/4] lg:aspect-[4/5]">
-                <Parallax speed={8} className="absolute -inset-y-[10%] inset-x-0">
+                <Parallax
+                  speed={8}
+                  className="absolute -inset-y-[10%] inset-x-0"
+                >
                   <Image
                     src={img(IMAGES.diningPlating)}
                     alt="An artfully plated dish at Namaskaram"
@@ -102,7 +105,7 @@ export default function DiningPage() {
               <Reveal preset="fadeUp" delay={0.1}>
                 <div className="mt-6 space-y-4 text-base leading-relaxed text-muted-foreground">
                   <p>
-                    Namaskaram is our expression of taste and refinement — a
+                    Namaskaram is our expression of taste and refinement - a
                     space where every dish is created with care, balancing
                     technique, presentation and seasonality.
                   </p>
@@ -115,7 +118,10 @@ export default function DiningPage() {
               </Reveal>
               <Reveal preset="fadeUp" delay={0.2}>
                 <span className="mt-9 inline-flex items-center gap-3 rounded-full border border-accent/40 px-5 py-2.5 text-[11px] font-medium uppercase tracking-[0.22em] text-accent">
-                  <span className="size-1.5 rounded-full bg-accent" aria-hidden />
+                  <span
+                    className="size-1.5 rounded-full bg-accent"
+                    aria-hidden
+                  />
                   Opening Soon
                 </span>
               </Reveal>
@@ -131,7 +137,7 @@ export default function DiningPage() {
         imageAlt="A dish in preparation at Namaskaram"
       />
 
-      {/* ── Pillars — numbered editorial columns ─────────────────────── */}
+      {/* ── Pillars - numbered editorial columns ─────────────────────── */}
       <section className="bg-background py-20 md:py-28">
         <Container>
           <Reveal stagger className="grid gap-y-14 md:grid-cols-3">

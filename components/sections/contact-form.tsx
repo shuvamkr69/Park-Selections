@@ -10,7 +10,8 @@ type Status = "idle" | "submitting" | "success";
 const fieldClass =
   "w-full rounded-lg border border-border bg-background px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground/70 transition-colors focus:border-accent focus:outline-none focus:ring-2 focus:ring-accent/30";
 
-const labelClass = "mb-1.5 block text-xs font-medium tracking-wide text-foreground";
+const labelClass =
+  "mb-1.5 block text-xs font-medium tracking-wide text-foreground";
 
 export function ContactForm() {
   const [status, setStatus] = useState<Status>("idle");
@@ -18,7 +19,7 @@ export function ContactForm() {
   async function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
     setStatus("submitting");
-    // Simulated submission — wire to a real endpoint / server action here.
+    // Simulated submission - wire to a real endpoint / server action here.
     await new Promise((r) => setTimeout(r, 1200));
     setStatus("success");
   }
@@ -55,7 +56,13 @@ export function ContactForm() {
           <label htmlFor="name" className={labelClass}>
             Full Name
           </label>
-          <input id="name" name="name" required placeholder="Your name" className={fieldClass} />
+          <input
+            id="name"
+            name="name"
+            required
+            placeholder="Your name"
+            className={fieldClass}
+          />
         </div>
         <div>
           <label htmlFor="email" className={labelClass}>
@@ -86,19 +93,33 @@ export function ContactForm() {
           <label htmlFor="checkin" className={labelClass}>
             Check-in
           </label>
-          <input id="checkin" name="checkin" type="date" className={fieldClass} />
+          <input
+            id="checkin"
+            name="checkin"
+            type="date"
+            className={fieldClass}
+          />
         </div>
         <div>
           <label htmlFor="checkout" className={labelClass}>
             Check-out
           </label>
-          <input id="checkout" name="checkout" type="date" className={fieldClass} />
+          <input
+            id="checkout"
+            name="checkout"
+            type="date"
+            className={fieldClass}
+          />
         </div>
         <div className="sm:col-span-2">
           <label htmlFor="interest" className={labelClass}>
             I'm interested in
           </label>
-          <select id="interest" name="interest" className={cn(fieldClass, "appearance-none")}>
+          <select
+            id="interest"
+            name="interest"
+            className={cn(fieldClass, "appearance-none")}
+          >
             <option>A room reservation</option>
             <option>A wedding or event</option>
             <option>A corporate meeting</option>

@@ -40,7 +40,7 @@ export function Stats() {
         onEnter: () => {
           const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
 
-          // 1 — cells rise + fade in on a stagger
+          // 1 - cells rise + fade in on a stagger
           tl.to("[data-cell]", {
             y: 0,
             autoAlpha: 1,
@@ -48,7 +48,7 @@ export function Stats() {
             stagger: 0.12,
           });
 
-          // 2 — each figure counts up progressively (synced to its cell)
+          // 2 - each figure counts up progressively (synced to its cell)
           nums.forEach((el, i) => {
             const target = Number(el.dataset.value ?? 0);
             const suffix = el.dataset.suffix ?? "";
@@ -67,12 +67,8 @@ export function Stats() {
             );
           });
 
-          // 3 — accent underline sweeps out beneath each figure
-          tl.to(
-            "[data-bar]",
-            { scaleX: 1, duration: 1, stagger: 0.12 },
-            0.35,
-          );
+          // 3 - accent underline sweeps out beneath each figure
+          tl.to("[data-bar]", { scaleX: 1, duration: 1, stagger: 0.12 }, 0.35);
         },
       });
     }, root);

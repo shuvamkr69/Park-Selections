@@ -15,7 +15,7 @@ import { cn } from "@/lib/utils";
 export const metadata: Metadata = {
   title: "Weddings & Events",
   description:
-    "Host weddings, engagements, receptions and corporate meetings at Park Selections Bhubaneswar — elegant indoor and open-air venues.",
+    "Host weddings, engagements, receptions and corporate meetings at Park Selections Bhubaneswar - elegant indoor and open-air venues.",
   alternates: { canonical: "/events" },
 };
 
@@ -72,7 +72,7 @@ export default function EventsPage() {
         </Container>
       </section>
 
-      {/* ── Venue showcase — alternating editorial rows ──────────────── */}
+      {/* ── Venue showcase - alternating editorial rows ──────────────── */}
       <section className="bg-background pb-20 pt-6 md:pb-28">
         <Container>
           {EVENTS.map((event, i) => {
@@ -113,7 +113,12 @@ export default function EventsPage() {
                 </Reveal>
 
                 {/* Content */}
-                <div className={cn("relative lg:col-span-5", flipped && "lg:order-1")}>
+                <div
+                  className={cn(
+                    "relative lg:col-span-5",
+                    flipped && "lg:order-1",
+                  )}
+                >
                   <span
                     aria-hidden="true"
                     className="pointer-events-none absolute -left-2 -top-12 select-none font-serif text-8xl leading-none text-foreground/[0.05] md:text-9xl"
@@ -143,13 +148,21 @@ export default function EventsPage() {
                     </p>
                   </Reveal>
 
-                  <Reveal stagger childSelector="li" as="ul" className="mt-7 space-y-2.5">
+                  <Reveal
+                    stagger
+                    childSelector="li"
+                    as="ul"
+                    className="mt-7 space-y-2.5"
+                  >
                     {event.highlights.slice(0, 3).map((h) => (
                       <li
                         key={h}
                         className="flex items-center gap-3 text-[13px] uppercase tracking-[0.12em] text-foreground/80"
                       >
-                        <span className="h-px w-6 shrink-0 bg-accent" aria-hidden />
+                        <span
+                          className="h-px w-6 shrink-0 bg-accent"
+                          aria-hidden
+                        />
                         {h}
                       </li>
                     ))}

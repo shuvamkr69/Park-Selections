@@ -16,7 +16,7 @@ import { gsap, ScrollTrigger, prefersReducedMotion } from "@/lib/gsap";
 import { cn } from "@/lib/utils";
 
 /**
- * Guest stories — editorial testimonial stage.
+ * Guest stories - editorial testimonial stage.
  *
  * Left column carries the section identity and an aggregate rating; the right
  * column is a rotating "stage" where each quote enters word-by-word through
@@ -83,7 +83,13 @@ export function Testimonials() {
           gsap.fromTo(
             meta,
             { autoAlpha: 0, y: 18 },
-            { autoAlpha: 1, y: 0, duration: 0.7, ease: "power3.out", delay: 0.35 },
+            {
+              autoAlpha: 1,
+              y: 0,
+              duration: 0.7,
+              ease: "power3.out",
+              delay: 0.35,
+            },
           );
         }
       };
@@ -122,7 +128,12 @@ export function Testimonials() {
     const tween = gsap.fromTo(
       bar,
       { scaleX: 0 },
-      { scaleX: 1, duration: HOLD, ease: "none", onComplete: () => go(index + 1) },
+      {
+        scaleX: 1,
+        duration: HOLD,
+        ease: "none",
+        onComplete: () => go(index + 1),
+      },
     );
     progressRef.current = tween;
     return () => {
@@ -156,7 +167,7 @@ export function Testimonials() {
             />
             <Reveal preset="fadeUp" delay={0.1}>
               <p className="mt-5 max-w-sm text-base leading-relaxed text-muted-foreground">
-                A stay that stays in your heart — in the words of our guests.
+                A stay that stays in your heart - in the words of our guests.
               </p>
             </Reveal>
 
@@ -168,7 +179,10 @@ export function Testimonials() {
                 <div className="pb-1.5">
                   <div className="flex gap-1">
                     {Array.from({ length: 5 }).map((_, i) => (
-                      <Star key={i} className="size-4 fill-accent text-accent" />
+                      <Star
+                        key={i}
+                        className="size-4 fill-accent text-accent"
+                      />
                     ))}
                   </div>
                   <p className="mt-2 text-[11px] uppercase tracking-[0.22em] text-muted-foreground">
@@ -212,7 +226,10 @@ export function Testimonials() {
                     key={`${index}-${i}`}
                     className="inline-block overflow-hidden align-top"
                   >
-                    <span data-word className="inline-block will-change-transform">
+                    <span
+                      data-word
+                      className="inline-block will-change-transform"
+                    >
                       {word}
                       {" "}
                     </span>
@@ -254,7 +271,9 @@ export function Testimonials() {
                     aria-hidden="true"
                     className={cn(
                       "absolute bottom-0 left-0 h-px w-full origin-left bg-accent transition-transform duration-300",
-                      i === index ? "scale-x-100" : "scale-x-0 group-hover:scale-x-100",
+                      i === index
+                        ? "scale-x-100"
+                        : "scale-x-0 group-hover:scale-x-100",
                     )}
                   />
                 </button>

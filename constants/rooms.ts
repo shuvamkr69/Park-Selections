@@ -13,10 +13,10 @@ const commonAmenities = [
 export const ROOMS: Room[] = [
   {
     slug: "deluxe-twin-city-view",
-    name: "Deluxe Twin — City View",
+    name: "Deluxe Twin - City View",
     tagline: "Twin comfort with skyline light",
     description:
-      "Two plush single beds, floor-to-ceiling light and a calming city outlook — ideal for friends and colleagues travelling together.",
+      "Two plush single beds, floor-to-ceiling light and a calming city outlook - ideal for friends and colleagues travelling together.",
     longDescription:
       "The Deluxe Twin frames the Bhubaneswar skyline through generous windows and pairs it with two individually dressed beds. Warm neutral tones, tactile textures and a considered work nook make it as suited to a productive stay as a restful one.",
     priceFrom: 4200,
@@ -33,7 +33,7 @@ export const ROOMS: Room[] = [
     name: "Deluxe King",
     tagline: "Space to unwind, beautifully",
     description:
-      "A generous king room with a serene palette and a spa-inspired bath — effortless comfort for leisure and business alike.",
+      "A generous king room with a serene palette and a spa-inspired bath - effortless comfort for leisure and business alike.",
     longDescription:
       "The Deluxe King is an exercise in calm. A plush king bed anchors the room, while soft lighting, natural materials and a modern bathroom create a retreat that feels a world away from the day outside.",
     priceFrom: 5200,
@@ -70,7 +70,7 @@ export const ROOMS: Room[] = [
     description:
       "An open-plan suite with a distinct lounge corner, premium furnishings and room to spread out and relax.",
     longDescription:
-      "The Junior Suite introduces a defined living space to the comfort of our king rooms. Curl up in the reading corner, host a quiet conversation, or simply enjoy the extra room — every detail is chosen for a longer, more indulgent stay.",
+      "The Junior Suite introduces a defined living space to the comfort of our king rooms. Curl up in the reading corner, host a quiet conversation, or simply enjoy the extra room - every detail is chosen for a longer, more indulgent stay.",
     priceFrom: 8200,
     size: "44 m²",
     occupancy: "2–3 Guests",
@@ -86,7 +86,7 @@ export const ROOMS: Room[] = [
     name: "The Suite",
     tagline: "Our most expansive stay",
     description:
-      "A grand suite with a full living room, premium amenities and panoramic views — the signature Park Selections experience.",
+      "A grand suite with a full living room, premium amenities and panoramic views - the signature Park Selections experience.",
     longDescription:
       "Our flagship Suite is designed for those who want the very best. A separate living room, a sumptuous bedroom and a marble bath frame panoramic views of the city. Personalised service ensures every moment feels considered.",
     priceFrom: 11500,

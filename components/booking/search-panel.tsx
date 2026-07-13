@@ -71,7 +71,7 @@ type SearchPanelProps = {
   onSearch: () => void;
 };
 
-/** Booking search bar — dates, party steppers, promo code, live nights. */
+/** Booking search bar - dates, party steppers, promo code, live nights. */
 export function SearchPanel({
   search,
   onChange,
@@ -149,7 +149,9 @@ export function SearchPanel({
               type="date"
               min={addDaysISO(search.checkIn, 1)}
               value={search.checkOut}
-              onChange={(e) => onChange({ ...search, checkOut: e.target.value })}
+              onChange={(e) =>
+                onChange({ ...search, checkOut: e.target.value })
+              }
               className={fieldClass}
             />
           </div>
@@ -209,7 +211,11 @@ export function SearchPanel({
                 onKeyDown={(e) => e.key === "Enter" && applyPromo()}
                 placeholder="e.g. PARK10"
                 aria-invalid={promoError}
-                className={cn(fieldClass, "pl-10 pr-16 uppercase", promoError && "border-red-400")}
+                className={cn(
+                  fieldClass,
+                  "pl-10 pr-16 uppercase",
+                  promoError && "border-red-400",
+                )}
               />
               <button
                 type="button"
@@ -236,9 +242,10 @@ export function SearchPanel({
             >
               {Math.max(nights, 0)}
             </span>{" "}
-            night{nights === 1 ? "" : "s"} ·{" "}
-            {search.adults + search.children} guest
-            {search.adults + search.children === 1 ? "" : "s"} · {search.rooms} room
+            night{nights === 1 ? "" : "s"} · {search.adults + search.children}{" "}
+            guest
+            {search.adults + search.children === 1 ? "" : "s"} · {search.rooms}{" "}
+            room
             {search.rooms === 1 ? "" : "s"}
           </span>
         </p>

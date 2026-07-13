@@ -16,7 +16,7 @@ export function Preloader() {
   const logoRef = useRef<HTMLDivElement>(null);
 
   useLayoutEffect(() => {
-    // Skip on subsequent visits — preloader only runs once per session.
+    // Skip on subsequent visits - preloader only runs once per session.
     const seen = sessionStorage.getItem("ps-preloaded");
     if (seen) {
       setDone(true);
@@ -49,14 +49,14 @@ export function Preloader() {
     const ctx = gsap.context(() => {
       // ── Set all initial (hidden) states before first paint ─────────
       gsap.set("[data-pl=park]", { y: -30, opacity: 0 });
-      gsap.set(
-        "[data-pl=bar-upper-l], [data-pl=bar-lower-l]",
-        { scaleX: 0, transformOrigin: "right center" },
-      );
-      gsap.set(
-        "[data-pl=bar-upper-r], [data-pl=bar-lower-r]",
-        { scaleX: 0, transformOrigin: "left center" },
-      );
+      gsap.set("[data-pl=bar-upper-l], [data-pl=bar-lower-l]", {
+        scaleX: 0,
+        transformOrigin: "right center",
+      });
+      gsap.set("[data-pl=bar-upper-r], [data-pl=bar-lower-r]", {
+        scaleX: 0,
+        transformOrigin: "left center",
+      });
       gsap.set("[data-pl=sel]", { y: "115%" });
       gsap.set("[data-pl=byline]", { y: 14, opacity: 0 });
 
@@ -77,27 +77,39 @@ export function Preloader() {
       );
 
       // ── 2. SELECTIONS rises up between the bars via clipping wrapper ──
-      tl.to("[data-pl=sel]", {
-        y: "0%",
-        duration: 0.7,
-        ease: "power3.out",
-      }, 0.5);
+      tl.to(
+        "[data-pl=sel]",
+        {
+          y: "0%",
+          duration: 0.7,
+          ease: "power3.out",
+        },
+        0.5,
+      );
 
       // ── 3. PARK descends + fades in ────────────────────────────────
-      tl.to("[data-pl=park]", {
-        y: 0,
-        opacity: 1,
-        duration: 0.75,
-        ease: "power3.out",
-      }, 0.65);
+      tl.to(
+        "[data-pl=park]",
+        {
+          y: 0,
+          opacity: 1,
+          duration: 0.75,
+          ease: "power3.out",
+        },
+        0.65,
+      );
 
       // ── 4. "by ERA HOTELS" rises into view ─────────────────────────
-      tl.to("[data-pl=byline]", {
-        y: 0,
-        opacity: 1,
-        duration: 0.55,
-        ease: "power2.out",
-      }, 1.0);
+      tl.to(
+        "[data-pl=byline]",
+        {
+          y: 0,
+          opacity: 1,
+          duration: 0.55,
+          ease: "power2.out",
+        },
+        1.0,
+      );
 
       // ── 5. Hold: completed logo is fully visible ───────────────────
       tl.to({}, { duration: 0.5 });
@@ -156,7 +168,7 @@ export function Preloader() {
           PARK
         </div>
 
-        {/* ── Upper bar — two halves drawing from centre ────────── */}
+        {/* ── Upper bar - two halves drawing from centre ────────── */}
         <div
           className="relative"
           style={{ height: "1px", width: "clamp(13rem, 38vw, 20rem)" }}
@@ -171,7 +183,7 @@ export function Preloader() {
           />
         </div>
 
-        {/* ── SELECTIONS — slides up through the overflow-hidden mask ── */}
+        {/* ── SELECTIONS - slides up through the overflow-hidden mask ── */}
         <div className="overflow-hidden" style={{ paddingBlock: "0.15em" }}>
           <div
             data-pl="sel"

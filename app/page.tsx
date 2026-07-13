@@ -109,7 +109,7 @@ export default function HomePage() {
         title={["An expression of taste", "and refinement"]}
         body={[
           "Dining at Park Selections is a celebration of flavour, detail and thoughtful craftsmanship. Every dish is created with care, balancing technique, presentation and seasonality.",
-          "Namaskaram, our signature restaurant, is opening soon — a space where refined cuisine meets the warmth of Odia hospitality.",
+          "Namaskaram, our signature restaurant, is opening soon - a space where refined cuisine meets the warmth of Odia hospitality.",
         ]}
         image={img(IMAGES.diningRestaurant)}
         imageAlt="Namaskaram restaurant interior"
@@ -119,7 +119,7 @@ export default function HomePage() {
       <ServiceMarquee />
       {/* <AmenitiesGrid /> */}
       <Testimonials />
-      <Gallery description="From light-filled rooms to celebrated venues — a look at the spaces that make a stay here unforgettable." />
+      <Gallery description="From light-filled rooms to celebrated venues - a look at the spaces that make a stay here unforgettable." />
       <CTA />
     </div>
   );

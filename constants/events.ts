@@ -10,7 +10,7 @@ export const EVENTS: EventVenue[] = [
     description:
       "Elegant indoor settings and open-air venues that transform your most important day into a cherished memory.",
     longDescription:
-      "At Park Selections, every celebration begins with feeling. Our refined interiors and thoughtfully designed spaces adapt to your vision — from an intimate ceremony to a grand reception. Modern luxury blends with cultural warmth, and our team choreographs every detail so you can simply be present.",
+      "At Park Selections, every celebration begins with feeling. Our refined interiors and thoughtfully designed spaces adapt to your vision - from an intimate ceremony to a grand reception. Modern luxury blends with cultural warmth, and our team choreographs every detail so you can simply be present.",
     capacity: "Up to 500 Guests",
     image: img(IMAGES.wedding),
     gallery: [img(IMAGES.wedding), img(IMAGES.eventHall), img(IMAGES.reception)],
@@ -30,7 +30,7 @@ export const EVENTS: EventVenue[] = [
     description:
       "Intimate, beautifully styled spaces to mark the moment two families come together.",
     longDescription:
-      "An engagement is the first of many celebrations. Our flexible venues set the perfect tone — warm lighting, refined interiors and personalised service that adapts to the size and spirit of your gathering.",
+      "An engagement is the first of many celebrations. Our flexible venues set the perfect tone - warm lighting, refined interiors and personalised service that adapts to the size and spirit of your gathering.",
     capacity: "Up to 250 Guests",
     image: img(IMAGES.engagement),
     gallery: [img(IMAGES.engagement), img(IMAGES.reception), img(IMAGES.eventHall)],

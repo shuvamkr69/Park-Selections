@@ -135,20 +135,20 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
           animating.current = false;
         },
       })
-      // Phase 1 — expand circle until it covers the whole viewport.
+      // Phase 1 - expand circle until it covers the whole viewport.
       .to(overlay, {
         clipPath: `circle(${maxR}px at ${ox}px ${oy}px)`,
         duration: 0.62,
         ease: "power3.inOut",
       })
-      // Swap the theme at full coverage — the overlay colour and the new
+      // Swap the theme at full coverage - the overlay colour and the new
       // background are the same value so the seam is invisible.
       .call(() => {
         commitTheme(next);
         setTheme(next);
         themeRef.current = next;
       })
-      // Phase 2 — fast opacity fade to reveal the re-themed page.
+      // Phase 2 - fast opacity fade to reveal the re-themed page.
       .to(overlay, {
         opacity: 0,
         duration: 0.18,
@@ -157,12 +157,12 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
           overlay.style.clipPath = "";
         },
       });
-  }, []); // stable — reads themeRef, not React state
+  }, []); // stable - reads themeRef, not React state
 
   return (
     <ThemeContext.Provider value={{ theme, toggle, setTheme: setThemeMode }}>
       {children}
-      {/* Transition overlay — sits above cursor (z-100) and preloader (z-90). */}
+      {/* Transition overlay - sits above cursor (z-100) and preloader (z-90). */}
       <div
         ref={overlayRef}
         aria-hidden="true"

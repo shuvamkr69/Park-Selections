@@ -26,10 +26,13 @@ export async function generateMetadata({
   const room = getRoom(slug);
   if (!room) return { title: "Room Not Found" };
   return {
-    title: `${room.name} — Rooms`,
+    title: `${room.name} - Rooms`,
     description: room.description,
     alternates: { canonical: `/rooms/${room.slug}` },
-    openGraph: { title: `${room.name} · ${SITE.name}`, description: room.description },
+    openGraph: {
+      title: `${room.name} · ${SITE.name}`,
+      description: room.description,
+    },
   };
 }
 
@@ -57,7 +60,6 @@ export default async function RoomDetailPage({
         title={room.name}
         image={room.gallery[0]}
         imageAlt={room.name}
-
       />
 
       <section className="bg-background py-20 md:py-28">
@@ -163,12 +165,19 @@ export default async function RoomDetailPage({
                       <span className="inline-flex items-center gap-2 text-muted-foreground">
                         <Icon className="size-4 text-accent" /> {label}
                       </span>
-                      <span className="font-medium text-foreground">{value}</span>
+                      <span className="font-medium text-foreground">
+                        {value}
+                      </span>
                     </div>
                   ))}
                 </div>
 
-                <GlassButton href="/contact" size="lg" fullWidth className="mt-6">
+                <GlassButton
+                  href="/contact"
+                  size="lg"
+                  fullWidth
+                  className="mt-6"
+                >
                   Reserve This Room
                 </GlassButton>
                 <a
@@ -187,8 +196,14 @@ export default async function RoomDetailPage({
       {/* Other rooms */}
       <section className="bg-muted/40 py-20 md:py-28">
         <Container>
-          <SectionHeader eyebrow="Keep Exploring" title="Other rooms & suites" />
-          <Reveal stagger className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          <SectionHeader
+            eyebrow="Keep Exploring"
+            title="Other rooms & suites"
+          />
+          <Reveal
+            stagger
+            className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3"
+          >
             {others.map((r) => (
               <RoomCard key={r.slug} room={r} />
             ))}

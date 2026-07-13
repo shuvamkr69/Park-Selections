@@ -11,8 +11,8 @@ export const SITE = {
   legalName: "Park Selections Hotel",
   tagline: "A Stay That Stays In Your Heart",
   shortDescription:
-    "A luxury hotel in Bhubaneswar near KIIT — refined rooms, celebrated venues, and heartfelt hospitality.",
-  seoTitle: "Park Selections — Luxury Hotel in Bhubaneswar near KIIT",
+    "A luxury hotel in Bhubaneswar near KIIT - refined rooms, celebrated venues, and heartfelt hospitality.",
+  seoTitle: "Park Selections - Luxury Hotel in Bhubaneswar near KIIT",
   seoDescription:
     "Park Selections is a premium luxury hotel in Bhubaneswar, Odisha, near KIIT. Elegant rooms and suites, wedding & event venues, and fine dining at Namaskaram.",
   url: "https://www.parkselections.com",

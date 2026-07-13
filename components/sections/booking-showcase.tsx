@@ -1,13 +1,17 @@
 import Image from "next/image";
 import { ArrowUpRight, Maximize, Users, Eye, Check } from "lucide-react";
-import { BOOKING_ROOMS, BOOKING_URL, roomBookingUrl } from "@/constants/booking";
+import {
+  BOOKING_ROOMS,
+  BOOKING_URL,
+  roomBookingUrl,
+} from "@/constants/booking";
 import { Container } from "@/components/ui/container";
 import { GlassButton } from "@/components/ui/glass-button";
 import { Reveal } from "@/components/animation/reveal";
 import { TextReveal } from "@/components/animation/text-reveal";
 
 /**
- * Direct-booking showcase — a premium funnel to the hotel's official booking
+ * Direct-booking showcase - a premium funnel to the hotel's official booking
  * engine. Each row mirrors the live booking platform's room data (official
  * photography, capacity, amenities) and deep-links its category on the
  * engine; the engine itself is never replicated here.
@@ -46,7 +50,7 @@ export function BookingShowcase() {
           </div>
           <Reveal preset="fadeUp" delay={0.15}>
             <p className="max-w-sm text-sm leading-relaxed text-primary-foreground/70 md:text-right">
-              Live availability and rates on our official booking platform —
+              Live availability and rates on our official booking platform -
               secure, instant confirmation.
             </p>
           </Reveal>

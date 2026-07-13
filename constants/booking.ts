@@ -6,7 +6,7 @@ import { SITE } from "@/constants/site";
  *
  * Room ids, names, descriptions, capacities, sizes, bedding, amenity groups,
  * rack rates and photography mirror the hotel's official STAAH booking engine
- * — recreated here as a fully front-end prototype (no payments, no backend,
+ * - recreated here as a fully front-end prototype (no payments, no backend,
  * no external integration). Rates are indicative samples.
  */
 
@@ -59,7 +59,7 @@ export type BookingRoom = {
   view?: string;
   /** Official rack rate (₹ / night). */
   rackRate: number;
-  /** Units in inventory — used as the popularity signal. */
+  /** Units in inventory - used as the popularity signal. */
   popularity: number;
   amenities: string[];
   amenityGroups: Record<string, string[]>;
@@ -187,7 +187,7 @@ export const BOOKING_ROOMS: BookingRoom[] = [
     name: "Junior Suite",
     category: "Suite",
     description:
-      "A separate living area and bedroom in perfect balance — elevated comfort for guests who value privacy, style and functionality.",
+      "A separate living area and bedroom in perfect balance - elevated comfort for guests who value privacy, style and functionality.",
     longDescription:
       "Experience elevated comfort in our spacious Junior Suite, thoughtfully designed for guests who value privacy, style, and functionality. Featuring a separate living area and bedroom, the suite offers the perfect balance between work and relaxation. The bedroom includes a plush king-size bed, while the living area is furnished with a comfortable sofa and coffee table.",
     guests: "Up to 3 Guests",
@@ -222,7 +222,7 @@ export const BOOKING_ROOMS: BookingRoom[] = [
     name: "Suite",
     category: "Suite",
     description:
-      "Our most spacious stay — separate living and sleeping quarters with a full suite of premium amenities and considered detail.",
+      "Our most spacious stay - separate living and sleeping quarters with a full suite of premium amenities and considered detail.",
     longDescription:
       "Experience elevated comfort in our most spacious Suite, thoughtfully designed for guests who value privacy, style, and functionality. Featuring a separate living area and bedroom, the suite offers the perfect balance between work and relaxation. The bedroom includes a plush king-size bed, while the living area is furnished with a comfortable sofa and coffee table. The bathroom offers a separate shower and bath with a vanity basin and mirror.",
     guests: "Up to 3 Guests",

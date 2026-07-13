@@ -38,7 +38,7 @@ export function BookingSummary({
   const totalRef = useRef<HTMLSpanElement>(null);
   const shownTotal = useRef(0);
 
-  // Animate the total whenever it changes — count up/down + soft pulse.
+  // Animate the total whenever it changes - count up/down + soft pulse.
   useLayoutEffect(() => {
     const el = totalRef.current;
     const target = quote?.total ?? 0;
@@ -94,7 +94,8 @@ export function BookingSummary({
         </div>
         <div className="flex items-start justify-between gap-4">
           <dt className="inline-flex items-center gap-2 text-muted-foreground">
-            <CalendarDays className="size-4 text-accent" aria-hidden /> Check-out
+            <CalendarDays className="size-4 text-accent" aria-hidden />{" "}
+            Check-out
           </dt>
           <dd className="text-right font-medium text-foreground">
             {prettyDate(search.checkOut)}
@@ -133,9 +134,12 @@ export function BookingSummary({
               />
             </div>
             <div className="min-w-0">
-              <p className="truncate font-serif text-lg text-foreground">{room.name}</p>
+              <p className="truncate font-serif text-lg text-foreground">
+                {room.name}
+              </p>
               <p className="mt-0.5 inline-flex items-center gap-1.5 text-xs text-muted-foreground">
-                <BedDouble className="size-3.5 text-accent" aria-hidden /> {room.bed}
+                <BedDouble className="size-3.5 text-accent" aria-hidden />{" "}
+                {room.bed}
               </p>
             </div>
           </div>
@@ -151,10 +155,12 @@ export function BookingSummary({
         <dl className="mt-5 space-y-2.5 border-t border-border pt-5 text-sm">
           <div className="flex justify-between">
             <dt className="text-muted-foreground">
-              {inr(quote.nightly)} × {quote.nights} night{quote.nights === 1 ? "" : "s"} ×{" "}
-              {quote.roomsCount}
+              {inr(quote.nightly)} × {quote.nights} night
+              {quote.nights === 1 ? "" : "s"} × {quote.roomsCount}
             </dt>
-            <dd className="font-medium text-foreground">{inr(quote.subtotal)}</dd>
+            <dd className="font-medium text-foreground">
+              {inr(quote.subtotal)}
+            </dd>
           </div>
           {promo && (
             <div className="flex justify-between text-accent">
@@ -186,7 +192,8 @@ export function BookingSummary({
         </span>
       </div>
       <p className="mt-2 text-[11px] leading-relaxed text-muted-foreground">
-        Sample rates, tax-exclusive — a front-end preview of our reservation desk.
+        Sample rates, tax-exclusive - a front-end preview of our reservation
+        desk.
       </p>
 
       {showContinue && (

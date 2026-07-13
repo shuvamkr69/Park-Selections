@@ -12,7 +12,7 @@ import { Reveal } from "@/components/animation/reveal";
 export const metadata: Metadata = {
   title: "Rooms & Suites",
   description:
-    "Explore Park Selections' rooms and suites in Bhubaneswar — from Deluxe Twins to our signature Suite, each a light-filled retreat near KIIT.",
+    "Explore Park Selections' rooms and suites in Bhubaneswar - from Deluxe Twins to our signature Suite, each a light-filled retreat near KIIT.",
   alternates: { canonical: "/rooms" },
 };
 
@@ -29,10 +29,7 @@ export default function RoomsPage() {
 
       <section className="bg-background py-20 md:py-28">
         <Container>
-          <Reveal
-            stagger
-            className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3"
-          >
+          <Reveal stagger className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {ROOMS.map((room) => (
               <RoomCard key={room.slug} room={room} />
             ))}

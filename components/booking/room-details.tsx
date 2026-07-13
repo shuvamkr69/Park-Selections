@@ -22,7 +22,7 @@ type RoomDetailsProps = {
   onReserve: (room: BookingRoom) => void;
 };
 
-/** Premium room-details dialog — gallery, amenities, policies, pricing. */
+/** Premium room-details dialog - gallery, amenities, policies, pricing. */
 export function RoomDetails({
   room,
   search,
@@ -47,11 +47,22 @@ export function RoomDetails({
 
     if (!prefersReducedMotion() && overlayRef.current && panelRef.current) {
       const ctx = gsap.context(() => {
-        gsap.fromTo(overlayRef.current, { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.3 });
+        gsap.fromTo(
+          overlayRef.current,
+          { autoAlpha: 0 },
+          { autoAlpha: 1, duration: 0.3 },
+        );
         gsap.fromTo(
           panelRef.current,
           { y: 40, autoAlpha: 0, scale: 0.97 },
-          { y: 0, autoAlpha: 1, scale: 1, duration: 0.55, ease: "power3.out", delay: 0.05 },
+          {
+            y: 0,
+            autoAlpha: 1,
+            scale: 1,
+            duration: 0.55,
+            ease: "power3.out",
+            delay: 0.05,
+          },
         );
       });
       return () => {
@@ -104,7 +115,7 @@ export function RoomDetails({
             <Image
               key={activeImg}
               src={room.gallery[activeImg] ?? room.image}
-              alt={`${room.name} — photo ${activeImg + 1}`}
+              alt={`${room.name} - photo ${activeImg + 1}`}
               fill
               sizes="(max-width: 896px) 100vw, 896px"
               className="object-cover"
@@ -138,7 +149,13 @@ export function RoomDetails({
                       : "opacity-70 ring-white/30 hover:opacity-100",
                   )}
                 >
-                  <Image src={src} alt="" fill sizes="64px" className="object-cover" />
+                  <Image
+                    src={src}
+                    alt=""
+                    fill
+                    sizes="64px"
+                    className="object-cover"
+                  />
                 </button>
               ))}
             </div>
@@ -152,7 +169,10 @@ export function RoomDetails({
               {room.category === "Suite" ? "Suite" : "Guest Room"}
               {room.view ? ` · ${room.view}` : ""}
             </p>
-            <h3 id="room-details-title" className="mt-2 font-serif text-3xl text-foreground">
+            <h3
+              id="room-details-title"
+              className="mt-2 font-serif text-3xl text-foreground"
+            >
               {room.name}
             </h3>
 
@@ -164,8 +184,8 @@ export function RoomDetails({
                 <BedDouble className="size-4 text-accent" /> {room.bed}
               </span>
               <span className="inline-flex items-center gap-2">
-                <Users className="size-4 text-accent" /> {room.maxAdults} adults ·{" "}
-                {room.maxChildren} child
+                <Users className="size-4 text-accent" /> {room.maxAdults} adults
+                · {room.maxChildren} child
               </span>
             </div>
 
@@ -186,7 +206,10 @@ export function RoomDetails({
                         key={a}
                         className="flex items-start gap-2 text-sm text-foreground/80"
                       >
-                        <Check className="mt-0.5 size-3.5 shrink-0 text-accent" aria-hidden />
+                        <Check
+                          className="mt-0.5 size-3.5 shrink-0 text-accent"
+                          aria-hidden
+                        />
                         {a}
                       </li>
                     ))}
@@ -202,9 +225,14 @@ export function RoomDetails({
               </h4>
               <dl className="mt-3 grid gap-x-8 gap-y-2 sm:grid-cols-2">
                 {BOOKING_POLICIES.map((p) => (
-                  <div key={p.label} className="flex justify-between gap-4 text-sm">
+                  <div
+                    key={p.label}
+                    className="flex justify-between gap-4 text-sm"
+                  >
                     <dt className="text-muted-foreground">{p.label}</dt>
-                    <dd className="text-right font-medium text-foreground">{p.value}</dd>
+                    <dd className="text-right font-medium text-foreground">
+                      {p.value}
+                    </dd>
                   </div>
                 ))}
               </dl>
@@ -213,22 +241,31 @@ export function RoomDetails({
 
           {/* Price breakdown */}
           <aside className="h-fit rounded-xl border border-border bg-background p-6 lg:sticky lg:top-6">
-            <h4 className="font-serif text-xl text-foreground">Price Breakdown</h4>
+            <h4 className="font-serif text-xl text-foreground">
+              Price Breakdown
+            </h4>
             <dl className="mt-4 space-y-2.5 text-sm">
               <div className="flex justify-between">
                 <dt className="text-muted-foreground">Rack rate</dt>
-                <dd className="text-muted-foreground line-through">{inr(quote.rackNightly)}</dd>
+                <dd className="text-muted-foreground line-through">
+                  {inr(quote.rackNightly)}
+                </dd>
               </div>
               <div className="flex justify-between">
                 <dt className="text-muted-foreground">Direct rate / night</dt>
-                <dd className="font-medium text-foreground">{inr(quote.nightly)}</dd>
+                <dd className="font-medium text-foreground">
+                  {inr(quote.nightly)}
+                </dd>
               </div>
               <div className="flex justify-between">
                 <dt className="text-muted-foreground">
-                  {quote.nights} night{quote.nights === 1 ? "" : "s"} × {quote.roomsCount} room
+                  {quote.nights} night{quote.nights === 1 ? "" : "s"} ×{" "}
+                  {quote.roomsCount} room
                   {quote.roomsCount === 1 ? "" : "s"}
                 </dt>
-                <dd className="font-medium text-foreground">{inr(quote.subtotal)}</dd>
+                <dd className="font-medium text-foreground">
+                  {inr(quote.subtotal)}
+                </dd>
               </div>
               {promo && (
                 <div className="flex justify-between text-accent">
@@ -240,15 +277,21 @@ export function RoomDetails({
                 <dt className="text-muted-foreground">
                   Taxes &amp; fees ({Math.round(quote.taxRate * 100)}%)
                 </dt>
-                <dd className="font-medium text-foreground">{inr(quote.taxes)}</dd>
+                <dd className="font-medium text-foreground">
+                  {inr(quote.taxes)}
+                </dd>
               </div>
             </dl>
             <div className="mt-4 flex items-baseline justify-between border-t border-border pt-4">
-              <span className="text-sm font-medium text-foreground">Estimated total</span>
-              <span className="font-serif text-2xl text-foreground">{inr(quote.total)}</span>
+              <span className="text-sm font-medium text-foreground">
+                Estimated total
+              </span>
+              <span className="font-serif text-2xl text-foreground">
+                {inr(quote.total)}
+              </span>
             </div>
             <p className="mt-2 text-[11px] leading-relaxed text-muted-foreground">
-              Sample rates for illustration — final pricing is confirmed at the
+              Sample rates for illustration - final pricing is confirmed at the
               reservation desk.
             </p>
             <div className="mt-5">

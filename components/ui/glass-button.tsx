@@ -21,14 +21,14 @@ const FluidGlassButton = FluidGlassButtonRaw as unknown as React.ComponentType<{
 }>;
 
 /**
- * Shared button — wraps the vendored Framer "Fluid Glass Button" shader
+ * Shared button - wraps the vendored Framer "Fluid Glass Button" shader
  * component (components/framer/fluid-glass-button).
  *
  * The component's original colours, gradients, glass reflections and shader
- * animation are used exactly as provided — no baseColor / glassColor overrides
+ * animation are used exactly as provided - no baseColor / glassColor overrides
  * and no theme integration (that is handled separately). This wrapper only
  * makes it usable as the app's shared button, preserving the existing API:
- * children · href · onClick · disabled · className · size · fullWidth — with
+ * children · href · onClick · disabled · className · size · fullWidth - with
  * client-side routing and accessibility intact.
  */
 
@@ -97,15 +97,21 @@ export function GlassButton(props: GlassButtonProps) {
   // ── Link ─────────────────────────────────────────────────────────────
   if ("href" in props && props.href !== undefined) {
     const href = props.href;
-    const { onClick: userOnClick, target, rel } =
-      props as React.AnchorHTMLAttributes<HTMLAnchorElement>;
+    const {
+      onClick: userOnClick,
+      target,
+      rel,
+    } = props as React.AnchorHTMLAttributes<HTMLAnchorElement>;
     const external = /^(https?:|tel:|mailto:|#)/.test(href);
     // New-tab links always get an opener-safe rel.
-    const safeRel =
-      target === "_blank" ? (rel ?? "noopener noreferrer") : rel;
+    const safeRel = target === "_blank" ? (rel ?? "noopener noreferrer") : rel;
 
     const handleClick = (e: React.MouseEvent | React.KeyboardEvent) => {
-      (userOnClick as ((ev: React.MouseEvent | React.KeyboardEvent) => void) | undefined)?.(e);
+      (
+        userOnClick as
+          | ((ev: React.MouseEvent | React.KeyboardEvent) => void)
+          | undefined
+      )?.(e);
       if (e.defaultPrevented) return;
       // Mouse: honour new-tab / modifier clicks via the native <a>.
       if ("button" in e && isModifiedMouseEvent(e as React.MouseEvent)) return;
@@ -143,7 +149,9 @@ export function GlassButton(props: GlassButtonProps) {
         onClick={
           disabled
             ? undefined
-            : (onClick as ((e: React.MouseEvent | React.KeyboardEvent) => void) | undefined)
+            : (onClick as
+                | ((e: React.MouseEvent | React.KeyboardEvent) => void)
+                | undefined)
         }
         padding={padding}
         textFont={textFont}

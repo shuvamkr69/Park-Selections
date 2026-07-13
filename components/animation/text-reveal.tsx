@@ -37,7 +37,9 @@ export function TextReveal({
     const { from, to } = animations.textReveal();
 
     // Set hidden state immediately so nothing is visible under the preloader.
-    const ctx = gsap.context(() => { gsap.set(words, from); }, el);
+    const ctx = gsap.context(() => {
+      gsap.set(words, from);
+    }, el);
 
     let plListener: (() => void) | null = null;
     let destroyed = false;
@@ -49,13 +51,17 @@ export function TextReveal({
         delay,
         scrollTrigger: immediate
           ? undefined
-          : { trigger: el, start: "top 85%", toggleActions: "play none none none" },
+          : {
+              trigger: el,
+              start: "top 85%",
+              toggleActions: "play none none none",
+            },
       });
     };
 
     if (immediate && !sessionStorage.getItem("ps-preloaded")) {
       // On first-ever load: wait for the preloader outro to begin before
-      // revealing the headline — this is the cinematic hand-off moment.
+      // revealing the headline - this is the cinematic hand-off moment.
       plListener = play;
       window.addEventListener("pl:done", play, { once: true });
     } else {
@@ -74,7 +80,10 @@ export function TextReveal({
       {lines.map((line, li) => (
         <span key={li} className="block overflow-hidden pb-[0.08em]">
           {line.split(" ").map((word, wi) => (
-            <span key={wi} className="inline-block overflow-hidden align-bottom">
+            <span
+              key={wi}
+              className="inline-block overflow-hidden align-bottom"
+            >
               <span data-word className="inline-block will-change-transform">
                 {word}
                 {wi < line.split(" ").length - 1 ? " " : ""}

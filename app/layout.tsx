@@ -60,7 +60,7 @@ export default function RootLayout({
       suppressHydrationWarning
       className={`${fontVariables} antialiased`}
     >
-      {/* Anti-flash script — runs synchronously before first paint */}
+      {/* Anti-flash script - runs synchronously before first paint */}
       <head>
         <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
       </head>

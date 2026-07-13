@@ -21,7 +21,7 @@ export default function ContactPage() {
       <PageHero
         eyebrow="Contact & Reservations"
         title="We'd love to host you"
-        description="Reach out to plan your stay, celebration or corporate gathering — our team responds promptly."
+        description="Reach out to plan your stay, celebration or corporate gathering - our team responds promptly."
         image={img(IMAGES.heroLobby, 2000)}
         imageAlt="Park Selections reception"
       />
@@ -41,11 +41,11 @@ export default function ContactPage() {
           className="pointer-events-none absolute inset-0 z-[1] bg-background/20"
         />
 
-        {/* Content layer — form floats on the right; left stays open for the pin */}
+        {/* Content layer - form floats on the right; left stays open for the pin */}
         <div className="relative z-[2] py-16 md:py-24">
           <Container>
             <div className="grid lg:grid-cols-2 lg:gap-12">
-              {/* Left column intentionally empty — map + hotel pin visible here */}
+              {/* Left column intentionally empty - map + hotel pin visible here */}
               <div />
 
               {/* Enquiry form */}

@@ -17,7 +17,7 @@ type ImmersiveBannerProps = {
 };
 
 /**
- * Full-width immersive statement band — a parallax image under a deep primary
+ * Full-width immersive statement band - a parallax image under a deep primary
  * scrim with a single centred serif statement. Used as an elegant transition
  * between content sections on interior pages.
  */
@@ -31,7 +31,9 @@ export function ImmersiveBanner({
   className,
 }: ImmersiveBannerProps) {
   return (
-    <section className={cn("relative overflow-hidden py-28 md:py-44", className)}>
+    <section
+      className={cn("relative overflow-hidden py-28 md:py-44", className)}
+    >
       <div className="absolute inset-0">
         <Parallax speed={12} className="absolute -inset-y-[14%] inset-x-0">
           <Image

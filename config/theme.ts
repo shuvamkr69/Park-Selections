@@ -1,7 +1,7 @@
 /**
  * JS-side design tokens.
  *
- * This file centralizes the values consumed by JavaScript — GSAP timings,
+ * This file centralizes the values consumed by JavaScript - GSAP timings,
  * easings, breakpoints and z-index.
  *
  * Colours are NOT duplicated here: they live only in `app/theme.css` and are
@@ -68,7 +68,7 @@ export const theme = {
   /** Lenis smooth-scroll configuration. */
   lenis: {
     duration: 1.15,
-    // ease-out-expo — matches GSAP feel
+    // ease-out-expo - matches GSAP feel
     easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
     wheelMultiplier: 1,
     touchMultiplier: 1.5,

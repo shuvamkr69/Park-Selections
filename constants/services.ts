@@ -22,7 +22,7 @@ export const SERVICES: Service[] = [
   {
     title: "Rooms & Suites",
     description:
-      "Five refined room categories, from Deluxe Twins to our signature Suite — each a calm retreat.",
+      "Five refined room categories, from Deluxe Twins to our signature Suite - each a calm retreat.",
     icon: BedDouble,
   },
   {
@@ -40,7 +40,7 @@ export const SERVICES: Service[] = [
   {
     title: "Wellness & Leisure",
     description:
-      "Thoughtful spaces to move, unwind and restore — designed around your wellbeing.",
+      "Thoughtful spaces to move, unwind and restore - designed around your wellbeing.",
     icon: Sparkles,
   },
 ];

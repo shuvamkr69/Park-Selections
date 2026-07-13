@@ -1,14 +1,14 @@
 @import "tailwindcss";
 
 /* ==================================================================== *
- *  THEME — THE SINGLE SOURCE OF TRUTH FOR THE WHOLE SITE
+ *  THEME - THE SINGLE SOURCE OF TRUTH FOR THE WHOLE SITE
  * ==================================================================== *
  *
  *  Everything visual is driven from this one file:
- *    • COLOURS   — the custom properties in the blocks just below.
+ *    • COLOURS   - the custom properties in the blocks just below.
  *                  Edit a value and every page, component and canvas
  *                  effect updates (JS reads these variables at runtime).
- *    • FONTS     — mapped to Tailwind's font-sans / font-serif in the
+ *    • FONTS     - mapped to Tailwind's font-sans / font-serif in the
  *                  @theme block. The typefaces themselves are loaded in
  *                  config/fonts.ts (Next.js requires font loading in JS);
  *                  swap them there, wire them here.
@@ -60,7 +60,7 @@
   }
 }
 
-/* Explicit user choice — overrides both :root and the media query */
+/* Explicit user choice - overrides both :root and the media query */
 [data-theme="dark"] {
   --background: #0f0d0b;
   --foreground: #f0ead8;
@@ -76,7 +76,7 @@
   --ring: #c9a46a;
 }
 
-/* Explicit light choice — wins over dark system preference */
+/* Explicit light choice - wins over dark system preference */
 [data-theme="light"] {
   --background: #faf8f3;
   --foreground: #1c1b18;
@@ -93,7 +93,7 @@
 }
 
 /* ------------------------------------------------------------------ *
- * Tailwind theme mapping — exposes the tokens above as utility classes.
+ * Tailwind theme mapping - exposes the tokens above as utility classes.
  * ------------------------------------------------------------------ */
 @theme inline {
   /* Colours */
@@ -110,7 +110,7 @@
   --color-border: var(--border);
   --color-ring: var(--ring);
 
-  /* Typography — families are loaded in config/fonts.ts */
+  /* Typography - families are loaded in config/fonts.ts */
   --font-sans: var(--font-sans-family), ui-sans-serif, system-ui, sans-serif;
   --font-serif: var(--font-serif-family), ui-serif, Georgia, serif;
 
@@ -266,7 +266,8 @@
   }
 }
 
-::view-transition-old(root), ::view-transition-new(root) {
-    animation: none;
-    mix-blend-mode: normal;
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
 }
