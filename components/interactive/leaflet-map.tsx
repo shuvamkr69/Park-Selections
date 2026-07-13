@@ -25,7 +25,9 @@ const ATTRIBUTION =
 function resolvedTheme(): "light" | "dark" {
   const attr = document.documentElement.getAttribute("data-theme");
   if (attr === "light" || attr === "dark") return attr;
-  return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+  return window.matchMedia("(prefers-color-scheme: dark)").matches
+    ? "dark"
+    : "light";
 }
 
 function popupHtml(accent: string): string {
@@ -75,8 +77,9 @@ export function LeafletMap() {
 
     // Gold teardrop marker matching the accent CSS variable.
     const accent =
-      getComputedStyle(document.documentElement).getPropertyValue("--accent").trim() ||
-      "#b8935a";
+      getComputedStyle(document.documentElement)
+        .getPropertyValue("--accent")
+        .trim() || "#b8935a";
 
     const icon = L.divIcon({
       className: "",
@@ -95,7 +98,7 @@ export function LeafletMap() {
       .addTo(map)
       .bindPopup(popupHtml(accent), {
         autoClose: false,
-        closeOnClick: false,
+        closeOnClick: true,
         autoPan: false, // don't fight the manual left-shift offset
         className: "ps-map-popup",
       });

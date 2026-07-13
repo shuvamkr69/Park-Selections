@@ -49,19 +49,23 @@ export function ServiceMarquee() {
             explored in a single glance.
           </p>
         </div>
+      </div>
 
-        <div className="relative mt-12 rounded-3xl bg-background/90 p-2 ring-1 ring-primary-foreground/10">
+      {/* Full-bleed wrapper — spans the entire viewport with only a slim,
+          consistent 16px aesthetic gutter on each side. */}
+      <div className="mt-12 w-full px-4">
+        <div className="relative w-full rounded-3xl bg-background/90 p-2 ring-1 ring-primary-foreground/10">
           <ThreeDMarquee images={images} />
 
           {/* Edge fades so the tilted grid melts into the section background */}
-          <div
+          {/* <div
             aria-hidden="true"
             className="pointer-events-none absolute inset-x-0 top-0 z-20 h-16 rounded-t-3xl bg-gradient-to-b from-primary to-transparent"
-          />
-          <div
+          /> */}
+          {/* <div
             aria-hidden="true"
             className="pointer-events-none absolute inset-x-0 bottom-0 z-20 h-16 rounded-b-3xl bg-gradient-to-t from-primary to-transparent"
-          />
+          /> */}
         </div>
       </div>
     </section>

@@ -106,7 +106,7 @@ export function Navbar() {
           <ThemeToggle lightNav={!solid} />
           <EyeFollowButton
             text="Book Now"
-            href="/contact"
+            href={SITE.contact.bookingUrl}
             className="hidden sm:block"
           />
           <button

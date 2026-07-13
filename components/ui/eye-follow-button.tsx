@@ -51,6 +51,19 @@ export function EyeFollowButton({
   className,
 }: EyeFollowButtonProps) {
   const { theme } = useTheme();
+  const isExternal = /^https?:\/\//.test(href);
+
+  // External targets (e.g. the official booking engine) open in a new tab
+  // with an opener-safe window, regardless of how the vendored Framer link
+  // renders its anchor internally.
+  const handleClickCapture = (e: React.MouseEvent) => {
+    if (!isExternal) return;
+    if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || e.button !== 0)
+      return; // let modifier clicks use native anchor behaviour
+    e.preventDefault();
+    e.stopPropagation();
+    window.open(href, "_blank", "noopener,noreferrer");
+  };
   const [colors, setColors] = useState({
     button: "#b8935a",
     text: "#1c1b18",
@@ -69,7 +82,7 @@ export function EyeFollowButton({
   }, [theme]);
 
   return (
-    <div className={className}>
+    <div className={className} onClickCapture={handleClickCapture}>
       <EyeFollowFramer
         text={text}
         link={href}

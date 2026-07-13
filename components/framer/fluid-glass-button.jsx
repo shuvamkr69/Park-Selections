@@ -214,6 +214,8 @@ function PremiumShaderButton(props) {
 		link,
 		style,
 		disabled,
+		target,
+		rel,
 	} = props;
 	const ariaLabel = props["aria-label"];
 	const isStatic = useIsStaticRenderer();
@@ -443,6 +445,8 @@ function PremiumShaderButton(props) {
 			<a
 				suppressHydrationWarning={true}
 				href={link}
+				target={target}
+				rel={rel}
 				ref={outerRef}
 				style={{ ...containerStyle, ...style }}
 				onMouseEnter={handleMouseEnterEvt}

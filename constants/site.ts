@@ -22,7 +22,8 @@ export const SITE = {
     phone: "+919777650375",
     phoneAlt: "+919777650357",
     email: "reservations@parkselections.com",
-    bookingUrl: "https://www.parkselections.com/booking",
+    bookingUrl:
+      "https://booking.parkselections.com/inst/#/home?propertyId=622NTLuT66M0Wvw3VvmEDJzhwz4F2ffvPYoxc0MzU=&JDRN=Y&RoomID=242632,242633,242634,242635,242636&ap=1&gsId=622NTLuT66M0Wvw3VvmEDJzhwz4F2ffvPYoxc0MzU=",
     address: {
       line1: "Plot No. 100, KIIT Road",
       line2: "Near Falcon Marine Exports, Chandaka Industrial Estate",

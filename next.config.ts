@@ -13,6 +13,18 @@ const nextConfig: NextConfig = {
         hostname: "images.unsplash.com",
         pathname: "/**",
       },
+      {
+        // Original Park Selections website imagery (Wix media CDN)
+        protocol: "https",
+        hostname: "static.wixstatic.com",
+        pathname: "/media/**",
+      },
+      {
+        // Official booking-platform imagery (STAAH image library)
+        protocol: "https",
+        hostname: "homesweb.staah.net",
+        pathname: "/**",
+      },
     ],
   },
 };

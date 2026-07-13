@@ -5,6 +5,7 @@ import { Container } from "@/components/ui/container";
 import { RoomCard } from "@/components/ui/room-card";
 import { PageHero } from "@/components/sections/page-hero";
 import { AmenitiesGrid } from "@/components/sections/amenities-grid";
+import { BookingShowcase } from "@/components/sections/booking-showcase";
 import { CTA } from "@/components/sections/cta";
 import { Reveal } from "@/components/animation/reveal";
 
@@ -39,6 +40,7 @@ export default function RoomsPage() {
         </Container>
       </section>
 
+      <BookingShowcase />
       <AmenitiesGrid />
       <CTA />
     </>

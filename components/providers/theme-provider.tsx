@@ -31,6 +31,11 @@ function overlayBg(mode: ThemeMode): string {
 interface ThemeContextValue {
   theme: ThemeMode;
   toggle: (e: MouseEvent<HTMLButtonElement>) => void;
+  /**
+   * Commit a theme synchronously (no overlay animation). Used by the magicui
+   * AnimatedThemeToggler, which supplies its own View-Transition reveal.
+   */
+  setTheme: (mode: ThemeMode) => void;
 }
 
 const ThemeContext = createContext<ThemeContextValue | null>(null);
@@ -65,6 +70,12 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
     commitTheme(t);
     themeRef.current = t;
     setTheme(t);
+  }, []);
+
+  const setThemeMode = useCallback((mode: ThemeMode) => {
+    commitTheme(mode);
+    themeRef.current = mode;
+    setTheme(mode);
   }, []);
 
   const toggle = useCallback((e: MouseEvent<HTMLButtonElement>) => {
@@ -149,7 +160,7 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
   }, []); // stable — reads themeRef, not React state
 
   return (
-    <ThemeContext.Provider value={{ theme, toggle }}>
+    <ThemeContext.Provider value={{ theme, toggle, setTheme: setThemeMode }}>
       {children}
       {/* Transition overlay — sits above cursor (z-100) and preloader (z-90). */}
       <div

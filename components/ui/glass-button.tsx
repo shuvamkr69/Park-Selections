@@ -15,6 +15,8 @@ const FluidGlassButton = FluidGlassButtonRaw as unknown as React.ComponentType<{
   textFont?: React.CSSProperties;
   style?: React.CSSProperties;
   disabled?: boolean;
+  target?: string;
+  rel?: string;
   "aria-label"?: string;
 }>;
 
@@ -95,9 +97,12 @@ export function GlassButton(props: GlassButtonProps) {
   // ── Link ─────────────────────────────────────────────────────────────
   if ("href" in props && props.href !== undefined) {
     const href = props.href;
-    const { onClick: userOnClick } =
+    const { onClick: userOnClick, target, rel } =
       props as React.AnchorHTMLAttributes<HTMLAnchorElement>;
     const external = /^(https?:|tel:|mailto:|#)/.test(href);
+    // New-tab links always get an opener-safe rel.
+    const safeRel =
+      target === "_blank" ? (rel ?? "noopener noreferrer") : rel;
 
     const handleClick = (e: React.MouseEvent | React.KeyboardEvent) => {
       (userOnClick as ((ev: React.MouseEvent | React.KeyboardEvent) => void) | undefined)?.(e);
@@ -119,6 +124,8 @@ export function GlassButton(props: GlassButtonProps) {
           padding={padding}
           textFont={textFont}
           style={boxStyle}
+          target={target}
+          rel={safeRel}
           aria-label={ariaLabel}
         />
       </span>
